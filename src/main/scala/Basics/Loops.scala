@@ -1,6 +1,6 @@
 package Basics
 
-object Loops_and_Recursion {
+object Loops {
 
   def main(args: Array[String]): Unit = {
     val i = 0
