@@ -1,9 +1,10 @@
-object HelloWorld {
+package Maths
+
+object Maths {
 
   def main(args: Array[String]): Unit = {
     val a = 3
     val b = 9
-    println("Hello world")
     println(a + "+" + b + "=" + sum(a, b))
   }
 
