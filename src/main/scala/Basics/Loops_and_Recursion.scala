@@ -12,6 +12,7 @@ object Loops_and_Recursion {
     forLoopWithConditional()
     nestedForLoop()
     breakingOutOfLoops()
+    loopingOverVarArgs(1,4,5,2)
   }
 
   def whileLoop(n: Int): Unit = {
@@ -80,12 +81,21 @@ object Loops_and_Recursion {
     val primeList = List(1, 2, 3, 5, 7)
     for (i <- primeList) {
       if (i == 5) {
-        print("time to break out of this loop")
+        print("time to break out of this loop\n")
         return
       }
       else if (i != 1)
         print(i + "\t")
     }
     print("\n")
+  }
+
+  def loopingOverVarArgs(args: Int*): Unit = {
+    println("\nIterating over a variable number of arguments")
+    var sum: Int = 0
+    for (i <- args) {
+      sum += i
+    }
+    print(sum + "\n")
   }
 }
