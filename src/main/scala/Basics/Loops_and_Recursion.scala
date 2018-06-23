@@ -11,6 +11,7 @@ object Loops_and_Recursion {
     iterateList(List(1, 7, 4, 2, 12))
     forLoopWithConditional()
     nestedForLoop()
+    breakingOutOfLoops()
   }
 
   def whileLoop(n: Int): Unit = {
@@ -71,6 +72,20 @@ object Loops_and_Recursion {
     println("\nNested for loops")
     for (i <- 1 to 6; j <- 2 to 7)
       println("i = " + i + " j = " + j)
+    print("\n")
+  }
+
+  def breakingOutOfLoops(): Unit = {
+    println("\nBreaking out of loops")
+    val primeList = List(1, 2, 3, 5, 7)
+    for (i <- primeList) {
+      if (i == 5) {
+        print("time to break out of this loop")
+        return
+      }
+      else if (i != 1)
+        print(i + "\t")
+    }
     print("\n")
   }
 }
