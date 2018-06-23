@@ -12,7 +12,7 @@ object Arrays {
     arrayBufferExample()
   }
 
-  def populateArray(): Unit = {
+  private def populateArray(): Unit = {
     people(0) = "Mark"
     people(1) = "Sally"
     people(2) = "Dave"
@@ -21,13 +21,13 @@ object Arrays {
     people(5) = "Peter"
   }
 
-  def arrayExample(): Unit = {
+  private def arrayExample(): Unit = {
     val friends = Array(people(2), people(4))
     printArray(friends)
     print("\n")
   }
 
-  def arrayBufferExample(): Unit = {
+  private def arrayBufferExample(): Unit = {
     val cars = ArrayBuffer[String]()
     cars += "Ford"
     cars ++= Array("Ferrari", "Audi")
@@ -35,7 +35,7 @@ object Arrays {
     print("\n")
   }
 
-  def printArray(arr: Array[String]): Unit = {
+  private def printArray(arr: Array[String]): Unit = {
     println("Printing array")
     for (i <- arr.indices)
       println(arr(i) + "\t")
