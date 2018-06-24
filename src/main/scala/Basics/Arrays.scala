@@ -14,6 +14,8 @@ object Arrays {
     transformDataInArray()
     functionalArrayCreation()
     multiDimensionalArray()
+    sumMinMaxArrayValues(numbers)
+    sortArray(numbers)
   }
 
   private def populateArray(): Unit = {
@@ -59,6 +61,25 @@ object Arrays {
       }
     }
     printMultiDimArray(multiDimArray)
+    print("\n")
+  }
+
+  private def sumMinMaxArrayValues(arr: Array[Int]): Unit = {
+    println("Sum, min and max of the  values in an array")
+    println("Sum: " + arr.sum)
+    println("Min: " + arr.min)
+    println("Max: " + arr.max)
+    print("\n")
+  }
+
+  private def sortArray(arr: Array[Int]): Unit = {
+    println("Sorting an array in descending order")
+    val sortArrDescending = arr.sortWith(_ > _)
+    printArrayForEach(for (i <- sortArrDescending) yield i.toString)
+
+    println("Sorting an array in ascending order")
+    val sortArrAscending = arr.sortWith(_ < _)
+    printArrayForEach(for (i <- sortArrAscending) yield i.toString)
   }
 
   private def printArray(arr: Array[String]): Unit = {
