@@ -7,4 +7,6 @@ scalaVersion := "2.12.6"
 lazy val Basics = project
 lazy val Maths = project
 lazy val Encapsulation = project in file("MainConcepts")
-lazy val Classes = project
+lazy val Inheritance = project in file("MainConcepts")
+lazy val Abstraction = project in file("MainConcepts")
+lazy val Polymorphism = project in file("MainConcepts")
