@@ -75,11 +75,12 @@ object Arrays {
   private def sortArray(arr: Array[Int]): Unit = {
     println("Sorting an array in descending order")
     val sortArrDescending = arr.sortWith(_ > _)
-    printArrayForEach(for (i <- sortArrDescending) yield i.toString)
+    println(sortArrDescending.deep.mkString(", "))
 
-    println("Sorting an array in ascending order")
+    println("\nSorting an array in ascending order")
     val sortArrAscending = arr.sortWith(_ < _)
-    printArrayForEach(for (i <- sortArrAscending) yield i.toString)
+    println(sortArrAscending.deep.mkString(", "))
+    print("\n")
   }
 
   private def printArray(arr: Array[String]): Unit = {
