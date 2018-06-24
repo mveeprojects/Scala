@@ -4,11 +4,11 @@ object Encapsulation {
   def main(args: Array[String]): Unit = {
 
     var animal = new Animal()
-    println(animal.getSound())
+    println(animal.getSound)
     println(animal.toString)
 
     var anotherAnimal = new Animal("Bob", "boo")
-    println(anotherAnimal.getSound())
+    println(anotherAnimal.getSound)
     println(anotherAnimal.toString)
   }
 
