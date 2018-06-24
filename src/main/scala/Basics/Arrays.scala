@@ -52,9 +52,9 @@ object Arrays {
   }
 
   private def multiDimensionalArray(): Unit = {
-    var multiDimArray = Array.ofDim[Int](10,10)
-    for(i <- 0 to 9){
-      for(j <- 0 to 9){
+    var multiDimArray = Array.ofDim[Int](10, 10)
+    for (i <- 0 to 9) {
+      for (j <- 0 to 9) {
         multiDimArray(i)(j) = i * j
       }
     }
@@ -72,10 +72,10 @@ object Arrays {
     arr.foreach(println)
   }
 
-  private def printMultiDimArray(arr: Array[Array[Int]]): Unit ={
+  private def printMultiDimArray(arr: Array[Array[Int]]): Unit = {
     println("Printing multi-dimensional array")
-    for(i <- 0 to 9){
-      for(j <- 0 to 9){
+    for (i <- 0 to 9) {
+      for (j <- 0 to 9) {
         print(arr(i)(j) + "\t")
       }
       println()
