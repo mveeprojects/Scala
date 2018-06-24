@@ -33,5 +33,4 @@ object Traits {
       "the bullet bounces off of %s".format(this.name)
     }
   }
-
 }
