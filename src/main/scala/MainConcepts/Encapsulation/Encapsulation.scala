@@ -12,7 +12,7 @@ object Encapsulation {
     println(anotherAnimal.toString)
   }
 
-  class Animal(var name: String, var sound: String) {
+  private class Animal(var name: String, var sound: String) {
 
     this.setName(name)
 
@@ -53,12 +53,11 @@ object Encapsulation {
   }
 
   // static companion object
-  object Animal {
+  private object Animal {
     private var idNumber = 0
     private def newIdNumber = {
       idNumber += 1
       idNumber
     }
   }
-
 }

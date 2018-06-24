@@ -8,13 +8,13 @@ object Abstraction {
     println(fang.move)
   }
 
-  abstract class Mammal(val name: String) {
+  private abstract class Mammal(val name: String) {
     var moveSpeed: Double
 
     def move: String
   }
 
-  class Wolf(name: String) extends Mammal(name){
+  private class Wolf(name: String) extends Mammal(name){
     override var moveSpeed: Double = 35.0
 
     override def move: String = {

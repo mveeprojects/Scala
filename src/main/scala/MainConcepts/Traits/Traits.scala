@@ -9,11 +9,11 @@ object Traits {
     println(superman.ricochet(1000))
   }
 
-  trait Flyable {
+  private trait Flyable {
     def fly: String
   }
 
-  trait Bulletproof {
+  private trait Bulletproof {
     def hitByBullet: String
 
     def ricochet(startSpeed: Double): String = {
@@ -23,7 +23,7 @@ object Traits {
 
   // can extend multiple traits using 'extends' and then 'with'
   // cannot extend more than 1 interface or abstract class
-  class Superhero(val name: String) extends Flyable with Bulletproof {
+  private class Superhero(val name: String) extends Flyable with Bulletproof {
 
     def fly: String = {
       "%s flys through the air".format(this.name)

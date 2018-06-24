@@ -9,7 +9,10 @@ object Inheritance {
 
     val dog = new Dog("Barry", "Woof", "Grrr")
     println(dog.getName)
+
     dog.setName("Goatface")
+    println(dog.getName)
+
     println(dog.toString)
   }
 
@@ -79,7 +82,7 @@ object Inheritance {
     }
 
     override def toString: String = {
-      "%s with id %d says %s or %s".format(this.name, this.id, this.sound, this.growl)
+      "%s with id %d says %s or %s".format(this.getName, this.id, this.sound, this.growl)
     }
   }
 }
