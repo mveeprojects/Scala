@@ -39,7 +39,6 @@ object Arrays {
     print("\n")
   }
 
-<<<<<<< HEAD
   private def transformDataInArray(): Unit = {
     val newPeopleList = for (person <- people) yield person + " is a person"
     printArrayForEach(newPeopleList)
