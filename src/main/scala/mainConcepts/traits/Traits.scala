@@ -1,4 +1,4 @@
-package MainConcepts.Traits
+package mainConcepts.traits
 
 object Traits {
 

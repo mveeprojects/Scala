@@ -1,4 +1,4 @@
-package MainConcepts.Abstraction
+package mainConcepts.abstraction
 
 object Abstraction {
 

@@ -1,4 +1,4 @@
-package MainConcepts.Encapsulation
+package mainConcepts.encapsulation
 
 object Encapsulation {
   def main(args: Array[String]): Unit = {

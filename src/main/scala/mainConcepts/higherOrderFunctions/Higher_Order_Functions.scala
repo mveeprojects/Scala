@@ -1,4 +1,4 @@
-package MainConcepts.Higher_Order_Functions
+package mainConcepts.higherOrderFunctions
 
 object Higher_Order_Functions {
 
