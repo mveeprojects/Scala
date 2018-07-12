@@ -1,12 +1,10 @@
 package options
 
-object OptionsExample {
+object SomeNoneExample extends App {
 
-  def main(args: Array[String]) {
-    checkStringAsNumber("1234f")
-    checkMap()
-    getOrElseExample()
-  }
+  checkStringAsNumber("1234f")
+  checkMap()
+  getOrElseExample()
 
   def checkStringAsNumber(in: String): Unit = {
     println("Number checking example:")
@@ -49,6 +47,4 @@ object OptionsExample {
     println("b.getOrElse(10): " + b.get)
     println("c.getOrElse(10): " + c.getOrElse(10))
   }
-
-  // either
 }
