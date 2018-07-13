@@ -1,4 +1,4 @@
-package options
+package options.either
 
 import akka.http.scaladsl.model.{IllegalUriException, Uri}
 
