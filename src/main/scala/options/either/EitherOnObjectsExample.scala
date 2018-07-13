@@ -3,9 +3,8 @@ package options.either
 import objectGeneration.PersonUsingCompanionObject
 
 import scala.language.postfixOps
-import scala.util.Try
 
-object EitherOnObjectsExample {
+object EitherOnObjectsExample extends App {
 
   val personWithNameAndAge = PersonUsingCompanionObject("Gurtrude", 408)
   println(personWithNameAndAge.toString)
@@ -13,9 +12,13 @@ object EitherOnObjectsExample {
   val personWithAgeOnly = PersonUsingCompanionObject(12)
   println(personWithAgeOnly.toString)
 
+  val anotherPersonWithNameAndAge = PersonUsingCompanionObject("Barry", 17)
+  println(anotherPersonWithNameAndAge.toString)
+
   println("Using Either on Objects")
   checkPerson(personWithAgeOnly)
   checkPerson(personWithNameAndAge)
+  checkPerson(anotherPersonWithNameAndAge)
 
   def checkPerson(person: PersonUsingCompanionObject): Unit = {
     checkIfNameExists(person) match {
@@ -25,12 +28,10 @@ object EitherOnObjectsExample {
   }
 
   def checkIfNameExists(person: PersonUsingCompanionObject): Either[String, String] = {
-    Try {
-      person.name
-      Left("The given person has provided their name (%s)".format(person.name))
-    } recover {
-      case npe: NullPointerException =>
-        Right("No name has been set for this person, the following exception was thrown: \n" + npe)
-    } get
+    if (person.name.equalsIgnoreCase("barry")) {
+      Left("We don't want (%s) here".format(person.name))
+    } else {
+      Right("%s is a good person".format(person.name))
+    }
   }
 }

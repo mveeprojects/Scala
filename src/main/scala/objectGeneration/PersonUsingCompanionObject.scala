@@ -2,8 +2,8 @@ package objectGeneration
 
 class PersonUsingCompanionObject {
 
-  var name: String = _
-  var age: Int = _
+  var name: String = ""
+  var age: Int = 0
 
   override def toString: String = {
     "Name: %s, Age: %d".format(this.name, this.age)
