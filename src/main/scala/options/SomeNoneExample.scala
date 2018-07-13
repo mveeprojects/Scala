@@ -2,9 +2,10 @@ package options
 
 object SomeNoneExample extends App {
 
-  checkStringAsNumber("1234f")
-  checkMap()
-  getOrElseExample()
+//  checkStringAsNumber("1234f")
+//  checkMap()
+//  getOrElseExample()
+  mappingExample()
 
   def checkStringAsNumber(in: String): Unit = {
     println("Number checking example:")
@@ -46,5 +47,20 @@ object SomeNoneExample extends App {
     println("a.getOrElse(0): " + a.getOrElse(0))
     println("b.getOrElse(10): " + b.get)
     println("c.getOrElse(10): " + c.getOrElse(10))
+
+    println("is a empty? " + a.isEmpty)
+    println("is b empty? " + b.isEmpty)
+    println("is c empty? " + c.isEmpty)
+  }
+
+  def mappingExample(): Unit = {
+    val input = List(1, 2, 3, 4, 5, 6)
+    input
+      .map(element => timesByTwo(element))
+      .foreach(println)
+  }
+
+  def timesByTwo(a: Int): Int = {
+    a * 2
   }
 }
