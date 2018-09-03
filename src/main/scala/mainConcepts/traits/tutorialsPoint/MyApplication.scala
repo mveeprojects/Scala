@@ -11,5 +11,8 @@ object MyApplication {
     myclass.saySomething(somethingToSay)
     myclass.saySomethingElse(somethingToSay)
     myclass.saySomethingLoudly(somethingToSay)
+    myclass.changePrefixTo("wallawalla")
+    myclass.sayHello()
   }
+
 }
