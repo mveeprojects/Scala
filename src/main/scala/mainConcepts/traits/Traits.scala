@@ -1,5 +1,10 @@
 package mainConcepts.traits
 
+// Encapsulates method and field definitions
+// Can be partially implemented, cannot have constructor parameters
+// Classes can mix in any number of traits, rather than inheriting from only one superclass (interface)
+// Child classes extending a trait can provide implementations for unimplemented methods in the trait
+
 object Traits {
 
   def main(args: Array[String]): Unit = {
