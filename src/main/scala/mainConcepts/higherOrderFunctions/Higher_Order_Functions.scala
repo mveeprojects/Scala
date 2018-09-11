@@ -36,18 +36,22 @@ object Higher_Order_Functions {
   }
 
   private def add(a: Int, b: Int): Int = {
+    println("Add function being used...")
     a + b
   }
 
   private def subtract(a: Int, b: Int): Int = {
+    println("Subtract function being used...")
     a - b
   }
 
   private def multiply(a: Int, b: Int): Int = {
+    println("Multiply function being used...")
     a * b
   }
 
   private def anotherHo(anotherFunction: (Int, Int) => Int, a: Int, b: Int): Int = {
+    println("Function being called with another function as the first parameter...")
     anotherFunction(a, b)
   }
 }
