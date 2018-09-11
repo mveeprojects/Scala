@@ -1,5 +1,7 @@
 package mainConcepts.higherOrderFunctions
 
+// Higher order function: function that takes other functions as parameters
+
 object Higher_Order_Functions {
 
   val testList = List(1, 3, 5, 7, 11)
@@ -8,6 +10,10 @@ object Higher_Order_Functions {
     mapping()
     filtering()
     printf("3 * 100 = %.1f\n\n", passingFunctionIntoFunction(times3, 100))
+
+    println(anotherHo(add, 3, 4))
+    println(anotherHo(subtract, 3, 4))
+    println(anotherHo(multiply, 3, 4))
   }
 
   private def mapping(): Unit = {
@@ -27,5 +33,21 @@ object Higher_Order_Functions {
   private def passingFunctionIntoFunction(function: Int => Double, num: Int) = {
     println("Passing functions into functions")
     function(num)
+  }
+
+  private def add(a: Int, b: Int): Int = {
+    a + b
+  }
+
+  private def subtract(a: Int, b: Int): Int = {
+    a - b
+  }
+
+  private def multiply(a: Int, b: Int): Int = {
+    a * b
+  }
+
+  private def anotherHo(anotherFunction: (Int, Int) => Int, a: Int, b: Int): Int = {
+    anotherFunction(a, b)
   }
 }
