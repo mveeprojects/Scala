@@ -1,5 +1,7 @@
 package mapsAndFlatmaps
 
+import scala.collection.immutable
+
 object MapVsFlatmap {
 
   private val nameList = List("Mark", "Bob", "Sally")
@@ -10,12 +12,14 @@ object MapVsFlatmap {
   }
 
   def mapBasicConcept(): Unit = {
-    println("Maps are simple conversions on the immediately available objects (Strings in this case)")
-    println(nameList.map(_.toUpperCase))
+    println("\nMaps are simple conversions on the immediately available objects (Strings in this case)")
+    val result: List[String] = nameList.map(_.toUpperCase)
+    println(result)
   }
 
   def flatMapBasicConcept(): Unit = {
-    println("Flatmaps are maps that are then flattened to a lower level (array of char in this case)")
-    println(nameList.flatMap(_.toLowerCase))
+    println("\nFlatmaps are maps that are then flattened to a lower level (array of char in this case)")
+    val result: List[Char] = nameList.flatMap(_.toLowerCase)
+    println(result)
   }
 }
