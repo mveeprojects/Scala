@@ -1,7 +1,5 @@
 package mapsAndFlatmaps
 
-import scala.collection.immutable
-
 object MapVsFlatmap {
 
   private val nameList = List("Mark", "Bob", "Sally")
