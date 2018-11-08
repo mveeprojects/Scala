@@ -1,6 +1,6 @@
 package mapsAndFlatmaps
 
-object Maps {
+object MapBasics {
 
   val numList = List(1, 2, 3, 4, 5, 6)
   val numArray = Array(1, 2, 3, 4, 5, 6)
@@ -8,15 +8,15 @@ object Maps {
   val myMap = Map("key1" -> 1, "key2" -> 2)
 
   def main(args: Array[String]): Unit = {
-    mapExampleOne()
-    mapExampleTwo()
-    mapExampleThree()
-    mapExampleFour()
-    mapExampleFive()
+    multiplyAllBy2Simple()
+    multiplyAllByTwoShorthand()
+    mapUsingFunction()
+    mapMapKeyValues()
+    mapMapKV_ToList()
   }
 
-  def mapExampleOne(): Unit = {
-    println("*** Maps - Example One ***")
+  def multiplyAllBy2Simple(): Unit = {
+    println("*** Maps - Multiply By 2 - Simple ***")
     println("\nList:")
     val numTimesTwoList = numList.map(elementVal => elementVal * 2)
     for (element <- numTimesTwoList) println(element)
@@ -30,15 +30,15 @@ object Maps {
     for (element <- numTimesTwoSet) println(element)
   }
 
-  def mapExampleTwo(): Unit = {
-    println("\n*** Maps - Example Two ***")
+  def multiplyAllByTwoShorthand(): Unit = {
+    println("\n*** Maps - Multiply By 2 - Shorthand ***")
     val numTimesTwoList = numList.map(_ * 2)
     for (element <- numTimesTwoList) println(element)
     println()
   }
 
-  def mapExampleThree(): Unit = {
-    println("\n*** Maps - Example Three ***")
+  def mapUsingFunction(): Unit = {
+    println("\n*** Maps - Map Using Function ***")
     val numGreaterThanTwoList = numList.map(elementVal => myFunction(elementVal))
     for (element <- numGreaterThanTwoList) println(element)
     println()
@@ -46,8 +46,8 @@ object Maps {
 
   def myFunction(x: Int): Option[Int] = if (x > 2) Some(x) else None
 
-  def mapExampleFour(): Unit = {
-    println("\n*** Maps - Example Four ***")
+  def mapMapKeyValues(): Unit = {
+    println("\n*** Maps - Map Key Values ***")
     myMap.map { keyValue: (String, Int) =>
       keyValue match {
         case (key, value) => (key, value * 2)
@@ -58,7 +58,7 @@ object Maps {
     }
   }
 
-  def mapExampleFive(): Unit = {
+  def mapMapKV_ToList(): Unit = {
     println("\n*** Maps - Example Five ***")
     val aList = myMap.map {
       case (key, value) => value * 2
