@@ -1,4 +1,4 @@
-package mainConcepts.traits.tutorialsPoint
+package general.basics.traits.tutorialsPoint
 
 // All of the below can be overridden
 // Forces you to override (implement) the saySomethingLoudly method and define its body

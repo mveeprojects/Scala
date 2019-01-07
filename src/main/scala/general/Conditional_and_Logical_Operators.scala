@@ -1,4 +1,4 @@
-package basics
+package general
 
 object Conditional_and_Logical_Operators {
 

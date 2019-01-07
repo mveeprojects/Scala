@@ -1,4 +1,4 @@
-package basics
+package general
 
 import scala.collection.mutable
 

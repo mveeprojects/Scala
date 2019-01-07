@@ -1,4 +1,4 @@
-package mainConcepts.higherOrderFunctions
+package general.higherOrderFunctions
 
 // Higher order function: function that takes other functions as parameters
 

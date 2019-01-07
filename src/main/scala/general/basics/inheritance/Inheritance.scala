@@ -1,4 +1,4 @@
-package mainConcepts.inheritance
+package general.basics.inheritance
 
 object Inheritance {
 

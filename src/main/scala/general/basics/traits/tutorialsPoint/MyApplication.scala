@@ -1,4 +1,4 @@
-package mainConcepts.traits.tutorialsPoint
+package general.basics.traits.tutorialsPoint
 
 object MyApplication {
 

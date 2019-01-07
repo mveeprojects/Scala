@@ -1,4 +1,4 @@
-package mainConcepts.traits
+package general.basics.traits
 
 // Encapsulates method and field definitions
 // Can be partially implemented, cannot have constructor parameters

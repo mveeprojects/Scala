@@ -36,10 +36,10 @@ object EitherExample extends App {
   def checkUri(uri: String): Either[String, String] = {
     Try {
       Uri(uri)
-      Left("You entered a good URL")
+      Right("You entered a good URL")
     } recover {
       case e: IllegalUriException =>
-        Right("You entered a bad URL, causing the following exception: \n" + e)
+        Left("You entered a bad URL, causing the following exception: \n" + e)
     }
   } get
 }

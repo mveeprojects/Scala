@@ -1,6 +1,6 @@
 package mapsAndFlatmaps
 
-object WorkingWithListOfOptions {
+object MapsAndListOfOptions {
 
   private val stringList = List("1", "2", "Blah", "3")
 
