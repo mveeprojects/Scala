@@ -3,12 +3,14 @@ package futures
 import java.lang.Thread._
 
 import scala.concurrent.ExecutionContext.Implicits.global
-import scala.concurrent.Future
+import scala.concurrent.{Await, Future}
+import scala.language.postfixOps
+import scala.concurrent.duration._
 import scala.util.Random
 
 object RunMultipleThingsJoinThemTogetherMoreEfficiently extends App {
   val inputList = List(1, 2, 3)
-  Future.sequence(inputList.map(Cloud.runAlgorithm))
+  Future.sequence(inputList.map(CallAndReturnStatusCode.fireRequest))
     .map(_.sum)
     .foreach(res => println(s"Result: $res"))
   sleep(2000)
@@ -16,9 +18,9 @@ object RunMultipleThingsJoinThemTogetherMoreEfficiently extends App {
 
 object RunMultipleThingsJoinThemTogether extends App {
 
-  val res1 = Cloud.runAlgorithm(1)
-  val res2 = Cloud.runAlgorithm(2)
-  val res3 = Cloud.runAlgorithm(3)
+  val res1 = CallAndReturnStatusCode.fireRequest(1)
+  val res2 = CallAndReturnStatusCode.fireRequest(2)
+  val res3 = CallAndReturnStatusCode.fireRequest(3)
 
   val result = for {
     r1 <- res1
@@ -30,8 +32,21 @@ object RunMultipleThingsJoinThemTogether extends App {
   sleep(2000)
 }
 
-object Cloud {
-  def runAlgorithm(i: Int): Future[Int] = Future {
+object CreateListOfIntsFromFutures extends App {
+  val inputList = List(1, 2, 3)
+  val statusCodes = getStatusCodeList
+  Await.result(statusCodes, 1 seconds)
+  statusCodes.foreach(sc => println(s"Status codes: $sc"))
+
+  def getStatusCodeList: Future[List[Int]] ={
+    Future.sequence(inputList.map(CallAndReturnStatusCode.fireRequest))
+  }
+
+  sleep(1000)
+}
+
+object CallAndReturnStatusCode {
+  def fireRequest(i: Int): Future[Int] = Future {
     i * Random.nextInt(1000)
   }
 }
