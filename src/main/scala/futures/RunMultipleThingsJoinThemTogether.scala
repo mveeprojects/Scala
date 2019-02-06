@@ -3,9 +3,9 @@ package futures
 import java.lang.Thread._
 
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.duration._
 import scala.concurrent.{Await, Future}
 import scala.language.postfixOps
-import scala.concurrent.duration._
 import scala.util.Random
 
 object RunMultipleThingsJoinThemTogetherMoreEfficiently extends App {
@@ -38,7 +38,7 @@ object CreateListOfIntsFromFutures extends App {
   Await.result(statusCodes, 1 seconds)
   statusCodes.foreach(sc => println(s"Status codes: $sc"))
 
-  def getStatusCodeList: Future[List[Int]] ={
+  def getStatusCodeList: Future[List[Int]] = {
     Future.sequence(inputList.map(CallAndReturnStatusCode.fireRequest))
   }
 
