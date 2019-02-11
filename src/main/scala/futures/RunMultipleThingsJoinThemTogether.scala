@@ -11,7 +11,6 @@ import scala.util.Random
 object RunMultipleThingsJoinThemTogetherMoreEfficiently extends App {
   val inputList = List(1, 2, 3)
   Future.sequence(inputList.map(CallAndReturnStatusCode.fireRequest))
-    .map(_.sum)
     .foreach(res => println(s"Result: $res"))
   sleep(2000)
 }

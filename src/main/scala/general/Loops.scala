@@ -12,7 +12,7 @@ object Loops {
     forLoopWithConditional()
     nestedForLoop()
     breakingOutOfLoops()
-    loopingOverVarArgs(1,4,5,2)
+    loopingOverVarArgs(1, 4, 5, 2)
   }
 
   def whileLoop(n: Int): Unit = {
