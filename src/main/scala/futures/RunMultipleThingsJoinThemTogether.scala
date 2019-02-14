@@ -2,6 +2,7 @@ package futures
 
 import java.lang.Thread._
 
+import scala.collection.mutable.ListBuffer
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration._
 import scala.concurrent.{Await, Future}
@@ -9,10 +10,13 @@ import scala.language.postfixOps
 import scala.util.Random
 
 object RunMultipleThingsJoinThemTogetherMoreEfficiently extends App {
+  val outputList = ListBuffer[Int]()
   val inputList = List(1, 2, 3)
   Future.sequence(inputList.map(CallAndReturnStatusCode.fireRequest))
-    .foreach(res => println(s"Result: $res"))
+    .foreach(res => outputList ++= res)
   sleep(2000)
+
+  outputList.toList.foreach(println)
 }
 
 object RunMultipleThingsJoinThemTogether extends App {
@@ -21,7 +25,7 @@ object RunMultipleThingsJoinThemTogether extends App {
   val res2 = CallAndReturnStatusCode.fireRequest(2)
   val res3 = CallAndReturnStatusCode.fireRequest(3)
 
-  val result = for {
+  val result: Future[Int] = for {
     r1 <- res1
     r2 <- res2
     r3 <- res3
