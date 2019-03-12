@@ -1,4 +1,6 @@
-object switchTest extends App {
+package general
+
+object SwitchStatements extends App {
 
     val name = "a"
 
