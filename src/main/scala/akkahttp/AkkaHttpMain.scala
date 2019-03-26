@@ -10,22 +10,21 @@ import scala.util.{Failure, Success}
 
 object AkkaHttpMain extends AppModules {
 
-  implicit val system: ActorSystem = ActorSystem("my-system")
+  implicit val system: ActorSystem = ActorSystem("my-actor-system")
   implicit val materializer: ActorMaterializer = ActorMaterializer()
   implicit val executionContext: ExecutionContextExecutor = system.dispatcher
 
   def main(args: Array[String]) {
     bind().onComplete {
       case Success(binding) =>
-        val localAddress = binding.localAddress
-        println("App running")
+        println(s"App is running -> ${binding.localAddress}")
       case Failure(exception) =>
-        println("App dead")
+        println(s"App is dead -> ${exception.getMessage}")
         system.terminate()
     }
   }
 
   def bind(): Future[Http.ServerBinding] = {
-    Http().bindAndHandle(appRoutes.route, "localhost", 8080)
+    Http().bindAndHandle(appRoutes.baseRoute, appConfig.hostname, appConfig.port)
   }
 }
