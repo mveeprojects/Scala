@@ -34,6 +34,7 @@ lazy val root = (project in file(".")).
       "com.softwaremill.macwire" %% "macros" % macwireVersion,
       "com.softwaremill.macwire" %% "macrosakka" % macwireVersion,
       "com.softwaremill.macwire" %% "util" % macwireVersion,
-      "com.softwaremill.macwire" %% "proxy" % macwireVersion
+      "com.softwaremill.macwire" %% "proxy" % macwireVersion,
+      "org.scalatra.scalate" %% "scalate-core" % "1.9.1"
     )
   )
