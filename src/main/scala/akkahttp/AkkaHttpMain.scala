@@ -26,9 +26,6 @@ object AkkaHttpMain extends AppModules {
   }
 
   def bind(): Future[Http.ServerBinding] = {
-    val interface = "localhost"
-    val port = 8080
-    val binding: Future[Http.ServerBinding] = Http().bindAndHandle(appRoutes.route, interface, port)
-    binding
+    Http().bindAndHandle(appRoutes.route, "localhost", 8080)
   }
 }
