@@ -6,6 +6,7 @@ lazy val akkaHttpVersion = "10.0.10"
 lazy val akkaVersion = "2.5.4"
 lazy val scalaLoggingVersion = "3.9.0"
 lazy val logbackVersion = "1.2.3"
+lazy val macwireVersion = "2.3.1"
 
 lazy val root = (project in file(".")).
   settings(
@@ -29,6 +30,10 @@ lazy val root = (project in file(".")).
       "net.ruippeixotog" %% "scala-scraper" % "2.1.0",
       "org.mongodb.scala" %% "mongo-scala-driver" % "2.4.0",
       "com.couchbase.client" % "java-client" % "2.7.4",
-      "net.liftweb" %% "lift-json" % "3.1.0-M3"
+      "net.liftweb" %% "lift-json" % "3.1.0-M3",
+      "com.softwaremill.macwire" %% "macros" % macwireVersion,
+      "com.softwaremill.macwire" %% "macrosakka" % macwireVersion,
+      "com.softwaremill.macwire" %% "util" % macwireVersion,
+      "com.softwaremill.macwire" %% "proxy" % macwireVersion
     )
   )
