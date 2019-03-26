@@ -9,13 +9,12 @@ class AppRoutes {
 
   val templateEngine = new TemplateEngine()
 
-  val baseRoute: Route =
+  val route: Route =
     get {
-      pathSingleSlash {
-        complete(HttpEntity(ContentTypes.`text/html(UTF-8)`, "<h1>Say hello to akka-http</h1>"))
-      }
       path("gimmehtml") {
         complete(HttpEntity(ContentTypes.`text/html(UTF-8)`, templateEngine.layout("views/index.scaml")))
       }
+    } ~ get {
+      complete(HttpEntity(ContentTypes.`text/html(UTF-8)`, "<h1>Say hello to akka-http</h1>"))
     }
 }

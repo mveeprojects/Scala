@@ -9,8 +9,4 @@ trait AppModules {
 
   lazy val appRoutes: AppRoutes = wire[AppRoutes]
   lazy val appConfig: AppConfig = wire[AppConfig]
-
-  lazy val routes: List[AppRoutes] = List(
-    appRoutes
-  )
 }

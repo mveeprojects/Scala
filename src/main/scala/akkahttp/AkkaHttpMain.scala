@@ -25,6 +25,6 @@ object AkkaHttpMain extends AppModules {
   }
 
   def bind(): Future[Http.ServerBinding] = {
-    Http().bindAndHandle(appRoutes.baseRoute, appConfig.hostname, appConfig.port)
+    Http().bindAndHandle(appRoutes.route, appConfig.hostname, appConfig.port)
   }
 }
