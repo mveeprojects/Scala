@@ -1,21 +1,22 @@
 package akkahttp
 
 import akka.actor.ActorSystem
-import akka.http.scaladsl.Http
+import akka.http.scaladsl._
 import akka.stream.ActorMaterializer
 import akkahttp.di.AppModules
+import com.typesafe.scalalogging.LazyLogging
 
 import scala.concurrent.{ExecutionContextExecutor, Future}
 import scala.util.{Failure, Success}
 
-object AkkaHttpMain extends AppModules {
+object AkkaHttpMain extends AppModules with LazyLogging {
 
   implicit val system: ActorSystem = ActorSystem("my-actor-system")
   implicit val materializer: ActorMaterializer = ActorMaterializer()
   implicit val executionContext: ExecutionContextExecutor = system.dispatcher
 
   def main(args: Array[String]) {
-    bind().onComplete {
+    bind.onComplete {
       case Success(binding) =>
         println(s"App is running -> ${binding.localAddress}")
       case Failure(exception) =>
@@ -24,7 +25,7 @@ object AkkaHttpMain extends AppModules {
     }
   }
 
-  def bind(): Future[Http.ServerBinding] = {
-    Http().bindAndHandle(appRoutes.route, appConfig.hostname, appConfig.port)
+  def bind: Future[Http.ServerBinding] = {
+    Http().bindAndHandle(allRoutes, appConfig.hostname, appConfig.port)
   }
 }
