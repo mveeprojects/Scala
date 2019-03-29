@@ -1,4 +1,4 @@
-package options.either
+package either
 
 import objectGeneration.PersonUsingCompanionObject
 

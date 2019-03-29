@@ -1,8 +1,6 @@
-package general.higherOrderFunctions
+package functions
 
-// Higher order function: function that takes other functions as parameters
-
-object Higher_Order_Functions {
+object MoreHigherOrderFunctions {
 
   val testList = List(1, 3, 5, 7, 11)
 

@@ -6,7 +6,7 @@ import com.typesafe.scalalogging.LazyLogging
 // 1st = seed value
 // 2nd = function to perform for each pair in order from left to right - hence "foldLEFT"
 
-object foldAndMapReduceExamples extends App with LazyLogging {
+object FoldAndMapReduce extends App with LazyLogging {
 
   recursiveCallExample()
   inlineFunctionExample()
