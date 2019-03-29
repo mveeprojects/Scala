@@ -1,7 +1,5 @@
 package either
 
-import objectGeneration.PersonUsingCompanionObject
-
 import scala.language.postfixOps
 
 object EitherOnObjectsExample extends App {
