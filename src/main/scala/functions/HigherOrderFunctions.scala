@@ -1,6 +1,8 @@
 package functions
 
 // "Higher order functions are functions that take at least one first class function as a parameter."
+// Java does not support HOFs or FCFs (https://alvinalexander.com/scala/fp-book/what-is-functional-programming)
+
 object HigherOrderFunctions extends App {
 
   private val str1 = "abc"
