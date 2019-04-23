@@ -19,5 +19,3 @@ object Producer extends App {
     producer.close()
   }
 }
-
-// IllegalStateException: No entry found for connection 1001
