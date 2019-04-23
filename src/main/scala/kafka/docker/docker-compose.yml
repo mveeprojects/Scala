@@ -10,6 +10,7 @@ services:
     image: 'bitnami/kafka:latest'
     ports:
       - '9092:9092'
+      - '9094:9094'
     environment:
       - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
       - ALLOW_PLAINTEXT_LISTENER=yes
