@@ -13,7 +13,7 @@ object Consumer extends App {
 
   def consumeFromKafka(topic: String): Unit = {
     val props = new Properties()
-    props.put("bootstrap.servers", "localhost:9092")
+    props.put("bootstrap.servers", "localhost:9093")
     props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer")
     props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer")
     props.put("auto.offset.reset", "latest")
