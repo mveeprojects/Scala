@@ -14,7 +14,7 @@ object PomToSBT extends App {
     val scope = (dependency \ "scope").text
     val artifactValName: String = artifactId.replaceAll("[-\\.]", "_")
 
-    print("\"%s\" %% \"%s\" %% \"%s\"".format(artifactValName, groupId, artifactId, version))
+    print("\"%s\" %% \"%s\" %% \"%s\"".format(artifactValName, groupId, version))
     scope match {
       case "" => print(",\n")
       case _ => print(" %% \"%s\",\n".format(scope))
