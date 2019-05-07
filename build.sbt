@@ -36,6 +36,11 @@ lazy val root = (project in file(".")).
       "com.softwaremill.macwire" %% "util" % macwireVersion,
       "com.softwaremill.macwire" %% "proxy" % macwireVersion,
       "org.scalatra.scalate" %% "scalate-core" % "1.9.1",
-      "org.apache.kafka" %% "kafka" % "2.1.0"
+      "org.apache.kafka" %% "kafka" % "2.1.0",
+
+      // Alpakka
+      "com.typesafe.akka" %% "akka-stream-kafka" % "0.22",
+      "org.apache.kafka" % "kafka-clients" % "2.1.1",
+      "org.scala-lang" % "scala-library" % "2.12.8"
     )
   )
