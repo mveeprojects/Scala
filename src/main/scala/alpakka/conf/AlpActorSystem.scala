@@ -1,4 +1,4 @@
-package alpakka.common
+package alpakka.conf
 
 import akka.actor.ActorSystem
 import akka.stream.ActorMaterializer

@@ -4,7 +4,7 @@ import akka.Done
 import akka.kafka.ProducerSettings
 import akka.kafka.scaladsl.Producer
 import akka.stream.scaladsl.Source
-import alpakka.common.AlpConfig
+import alpakka.conf.AlpConfig
 import com.typesafe.scalalogging.LazyLogging
 import org.apache.kafka.clients.producer.ProducerRecord
 import org.apache.kafka.common.serialization.StringSerializer

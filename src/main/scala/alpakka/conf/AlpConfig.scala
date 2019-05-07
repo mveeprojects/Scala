@@ -1,4 +1,4 @@
-package alpakka.common
+package alpakka.conf
 
 import com.typesafe.config.Config
 

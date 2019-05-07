@@ -4,7 +4,7 @@ import akka.kafka.scaladsl.Consumer
 import akka.kafka.scaladsl.Consumer.DrainingControl
 import akka.kafka.{ConsumerSettings, Subscriptions}
 import akka.stream.scaladsl.{Keep, Sink}
-import alpakka.common.AlpConfig
+import alpakka.conf.AlpConfig
 import com.typesafe.scalalogging.LazyLogging
 import org.apache.kafka.clients.consumer.ConsumerConfig
 import org.apache.kafka.common.TopicPartition
