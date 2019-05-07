@@ -19,7 +19,7 @@ object ProducerMain extends App with AlpConfig with LazyLogging {
   val producerDone: Future[Done] =
     Source(1 to 100)
       .map(_.toString)
-      .map(value => new ProducerRecord[String, String]("test-topic", value))
+      .map(value => new ProducerRecord[String, String](topic, value))
       .runWith(Producer.plainSink(producerSettings))
 
   producerDone.onComplete(_ => logger.info("all messages published"))
