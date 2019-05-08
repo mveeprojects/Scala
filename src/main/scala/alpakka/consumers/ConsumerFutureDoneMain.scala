@@ -21,7 +21,6 @@ object ConsumerFutureDoneMain extends App with AlpConfig with LazyLogging {
     .withGroupId("group1")
     .withProperty(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest")
 
-  val control =
     Consumer
       .committableSource(consumerSettings, Subscriptions.topics(topic))
       .mapAsync(10) { msg =>
