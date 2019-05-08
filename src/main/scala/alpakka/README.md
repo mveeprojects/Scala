@@ -19,3 +19,4 @@ Download the confluent platform (lots of useful binary files) from the link belo
 * Alpakka Producer official - https://doc.akka.io/docs/alpakka-kafka/current/producer.html
 * Alpakka Consumer official - https://doc.akka.io/docs/alpakka-kafka/current/consumer.html
 * Credit for simple consumer code - https://gist.github.com/davideicardi/ff914afe01cd8db97bae16a533d21fc8
+* More sample consumer code - https://medium.com/rahasak/kafka-consumer-with-scala-akka-streams-7e3237d6acc

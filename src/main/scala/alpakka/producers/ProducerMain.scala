@@ -1,4 +1,4 @@
-package alpakka
+package alpakka.producers
 
 import akka.Done
 import akka.kafka.ProducerSettings
