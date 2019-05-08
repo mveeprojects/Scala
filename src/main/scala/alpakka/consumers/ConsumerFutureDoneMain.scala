@@ -21,14 +21,14 @@ object ConsumerFutureDoneMain extends App with AlpConfig with LazyLogging {
     .withGroupId("group1")
     .withProperty(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest")
 
-    Consumer
-      .committableSource(consumerSettings, Subscriptions.topics(topic))
-      .mapAsync(10) { msg =>
-        saveToDB(msg.record.key, msg.record.value).map(_ => msg.committableOffset)
-      }
-      .toMat(Sink.seq)(Keep.both)
-      .mapMaterializedValue(DrainingControl.apply)
-      .run()
+  Consumer
+    .committableSource(consumerSettings, Subscriptions.topics(topic))
+    .mapAsync(10) { msg =>
+      saveToDB(msg.record.key, msg.record.value).map(_ => msg.committableOffset)
+    }
+    .toMat(Sink.seq)(Keep.both)
+    .mapMaterializedValue(DrainingControl.apply)
+    .run()
 
   def saveToDB(key: String, value: Array[Byte]): Future[Done] = Future {
     // put DB code here
