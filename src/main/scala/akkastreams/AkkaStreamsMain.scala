@@ -7,7 +7,7 @@ import scala.util.{Failure, Success}
 
 object AkkaStreamsMain extends App {
   basicStuff.basicSinkSourceExample()
-  startingWithFLows.sourceFlowSinkExample()
+  startingWithFlows.sourceFlowSinkExample()
 }
 
 object basicStuff extends ActorConfig {
@@ -21,7 +21,7 @@ object basicStuff extends ActorConfig {
   }
 }
 
-object startingWithFLows extends ActorConfig {
+object startingWithFlows extends ActorConfig {
 
   def sourceFlowSinkExample(): Unit = {
     val result = Source(1 to 6)
