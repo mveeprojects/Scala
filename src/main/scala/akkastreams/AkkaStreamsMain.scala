@@ -17,7 +17,7 @@ object BasicStuff extends ActorConfig {
     val sink = Sink.fold[Int, Int](0)(_ + _)
     val runnableGraph: RunnableGraph[Future[Int]] = source.toMat(sink)(Keep.right)
     val sumResult: Future[Int] = runnableGraph.run()
-    Utils.printFutureResult(sumResult, Utils.formatClassName(this.getClass.getSimpleName))
+    Utils.printFutureResult(sumResult, this.getClass.getSimpleName)
   }
 }
 
@@ -29,7 +29,7 @@ object StartingWithFlows extends ActorConfig {
       .filter(isDivisibleByThree)
       .toMat(Sink.fold[Int, Int](0)(_ + _))(Keep.right)
       .run()
-    Utils.printFutureResult(result, Utils.formatClassName(this.getClass.getSimpleName))
+    Utils.printFutureResult(result, this.getClass.getSimpleName)
   }
 
   private def multiplyByTwo(i: Int): Int = {
@@ -46,14 +46,14 @@ object StartingWithFlows extends ActorConfig {
 
 object Utils extends ActorConfig {
 
-  def formatClassName(str: String): String = {
-    str.replace("$","")
-  }
-
   def printFutureResult(future: Future[Int], ref: String): Unit = {
     future.onComplete {
-      case Success(value) => println(s"value from $ref: $value")
+      case Success(value) => println(s"value from ${formatClassName(ref)}: $value")
       case Failure(_) => println("something went wrong")
     }
+  }
+
+  private def formatClassName(str: String): String = {
+    str.replace("$", "")
   }
 }
