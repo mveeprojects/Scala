@@ -5,18 +5,23 @@ import akka.stream.scaladsl.{Keep, RunnableGraph, Sink, Source}
 import scala.concurrent.Future
 import scala.util.{Failure, Success}
 
-object AkkaStreamsMain extends App with ActorConfig {
+object AkkaStreamsMain extends App {
+  basicStuff.basicSinkSourceExample()
+  startingWithFLows.sourceFlowSinkExample()
+}
 
-  basicSinkSourceExample()
-  sourceFlowSinkExample()
+object basicStuff extends ActorConfig {
 
   def basicSinkSourceExample(): Unit = {
     val source = Source(1 to 10)
     val sink = Sink.fold[Int, Int](0)(_ + _)
     val runnableGraph: RunnableGraph[Future[Int]] = source.toMat(sink)(Keep.right)
     val sumResult: Future[Int] = runnableGraph.run()
-    printFutureResult(sumResult)
+    utils.printFutureResult(sumResult, utils.formatClassName(this.getClass.getSimpleName))
   }
+}
+
+object startingWithFLows extends ActorConfig {
 
   def sourceFlowSinkExample(): Unit = {
     val result = Source(1 to 6)
@@ -24,23 +29,30 @@ object AkkaStreamsMain extends App with ActorConfig {
       .filter(isDivisibleByThree)
       .toMat(Sink.fold[Int, Int](0)(_ + _))(Keep.right)
       .run()
-    printFutureResult(result)
+    utils.printFutureResult(result, utils.formatClassName(this.getClass.getSimpleName))
   }
 
-  def multiplyByTwo(i: Int): Int = {
+  private def multiplyByTwo(i: Int): Int = {
     i * 2
   }
 
-  def isDivisibleByThree(i: Int): Boolean = {
+  private def isDivisibleByThree(i: Int): Boolean = {
     i % 3 match {
       case 0 => true
       case _ => false
     }
   }
+}
 
-  def printFutureResult(future: Future[Int]): Unit = {
+object utils extends ActorConfig {
+
+  def formatClassName(str: String): String = {
+    str.replace("$","")
+  }
+
+  def printFutureResult(future: Future[Int], ref: String): Unit = {
     future.onComplete {
-      case Success(value) => println(s"value: $value")
+      case Success(value) => println(s"value from $ref: $value")
       case Failure(_) => println("something went wrong")
     }
   }
