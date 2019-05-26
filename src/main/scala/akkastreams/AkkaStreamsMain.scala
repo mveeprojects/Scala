@@ -6,22 +6,22 @@ import scala.concurrent.Future
 import scala.util.{Failure, Success}
 
 object AkkaStreamsMain extends App {
-  basicStuff.basicSinkSourceExample()
-  startingWithFlows.sourceFlowSinkExample()
+  BasicStuff.basicSinkSourceExample()
+  StartingWithFlows.sourceFlowSinkExample()
 }
 
-object basicStuff extends ActorConfig {
+object BasicStuff extends ActorConfig {
 
   def basicSinkSourceExample(): Unit = {
     val source = Source(1 to 10)
     val sink = Sink.fold[Int, Int](0)(_ + _)
     val runnableGraph: RunnableGraph[Future[Int]] = source.toMat(sink)(Keep.right)
     val sumResult: Future[Int] = runnableGraph.run()
-    utils.printFutureResult(sumResult, utils.formatClassName(this.getClass.getSimpleName))
+    Utils.printFutureResult(sumResult, Utils.formatClassName(this.getClass.getSimpleName))
   }
 }
 
-object startingWithFlows extends ActorConfig {
+object StartingWithFlows extends ActorConfig {
 
   def sourceFlowSinkExample(): Unit = {
     val result = Source(1 to 6)
@@ -29,7 +29,7 @@ object startingWithFlows extends ActorConfig {
       .filter(isDivisibleByThree)
       .toMat(Sink.fold[Int, Int](0)(_ + _))(Keep.right)
       .run()
-    utils.printFutureResult(result, utils.formatClassName(this.getClass.getSimpleName))
+    Utils.printFutureResult(result, Utils.formatClassName(this.getClass.getSimpleName))
   }
 
   private def multiplyByTwo(i: Int): Int = {
@@ -44,7 +44,7 @@ object startingWithFlows extends ActorConfig {
   }
 }
 
-object utils extends ActorConfig {
+object Utils extends ActorConfig {
 
   def formatClassName(str: String): String = {
     str.replace("$","")
