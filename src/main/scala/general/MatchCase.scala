@@ -15,8 +15,8 @@ object MatchCase extends App {
   }
 
 
-  println(functionThatIsAMatcher(name))
-  def functionThatIsAMatcher(x: Any): String = x match {
+  println(functionWithMatchAsTheBody(name))
+  def functionWithMatchAsTheBody(x: Any): String = x match {
     case s: String => "String"
     case i: Int => "int"
     case _ => "unknown"
