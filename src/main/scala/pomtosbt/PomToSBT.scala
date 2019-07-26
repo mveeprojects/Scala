@@ -7,14 +7,14 @@ import scala.xml._
 
 object PomToSBT extends App {
 
-  (XML.load("D:/Workspace/Scala/src/main/scala/pomtosbt/pom.xml") \\ "dependencies") \ "dependency" foreach ((dependency: Node) => {
+  (XML.load("/Users/mva13/Documents/Projects/Scala/src/main/scala/pomtosbt/pom.xml") \\ "dependencies") \ "dependency" foreach ((dependency: Node) => {
     val groupId = (dependency \ "groupId").text
     val artifactId = (dependency \ "artifactId").text
     val version = (dependency \ "version").text
     val scope = (dependency \ "scope").text
     val artifactValName: String = artifactId.replaceAll("[-\\.]", "_")
 
-    print("\"%s\" %% \"%s\" %% \"%s\"".format(artifactValName, groupId, version))
+    print("\"%s\" %%%% \"%s\" %% \"%s\"".format(groupId, artifactValName, version))
     scope match {
       case "" => print(",\n")
       case _ => print(" %% \"%s\",\n".format(scope))
