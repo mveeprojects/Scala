@@ -2,9 +2,10 @@ package partiallyAppliedFunctions
 
 object AnotherPAFMain extends App {
 
-  def wrap(htmlPrefix: String)(innerHTML: String)(htmlSuffix: String): Unit = println(htmlPrefix + html + htmlSuffix)
+  def wrap(htmlPrefix: String)(innerHTML: String)(htmlSuffix: String): Unit = println(htmlPrefix + innerHTML + htmlSuffix)
 
-  val html = "hi there"
-  wrap("<p>")(html)("</p>")
-  wrap("<div>")(html)("</div>")
+  val wrapWithDiv = wrap("<div>")(_: String)("</div>")
+
+  wrapWithDiv("potato")
+  wrapWithDiv("guppies")
 }
