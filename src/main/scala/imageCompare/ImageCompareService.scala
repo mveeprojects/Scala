@@ -10,11 +10,10 @@ object ImageCompareService extends LazyLogging {
 
   def compare(): Unit = {
     val imageMap = getImages
-    if(imageMap.keys.toList.length != 2) {
+    if (imageMap.keys.toList.length != 2) {
       logger.error(s"Exactly two images are required in the resources/images directory, you have ${imageMap.keys.toList.length} images in this directory currently")
-      logger.error(s"${imageMap.keys.toList}")
     }
-    else if(!isHashCodeIdentical(imageMap)){
+    else if (!isHashCodeIdentical(imageMap)) {
       logger.info("Image hashcodes do not match")
       findDiff(imageMap)
     }
@@ -32,7 +31,7 @@ object ImageCompareService extends LazyLogging {
 
   private def isHashCodeIdentical(imageMap: Map[String, BufferedImage]): Boolean = {
     val buffImageList: Seq[BufferedImage] = imageMap.values.toList
-    if(buffImageList.head.toString != buffImageList(1).toString)false
+    if (buffImageList.head.toString != buffImageList(1).toString) false
     else true
   }
 
