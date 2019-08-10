@@ -7,67 +7,51 @@ import java.text.DecimalFormat
 import com.typesafe.scalalogging.LazyLogging
 import javax.imageio.ImageIO
 
+case class ImageWithMeta(imageName: String, image: BufferedImage)
+
 object ImageCompareService extends LazyLogging {
 
   def compare(): Unit = {
     val startTime = System.currentTimeMillis()
     logger.info("Starting image comparison")
-    val imageMap = getImages
-    if (imageMap.keys.toList.length == 2) {
-      checkImageDimensions(imageMap)
-      checkDiffPercentage(imageMap)
-    }
-    else {
-      logger.error(s"Exactly two images are required in the resources/images directory, you have ${imageMap.keys.toList.length} images in this directory currently")
-    }
+
+    val result = checkDiffPercentage(getImages)
+
     val endTime = System.currentTimeMillis()
     logger.info(s"Diff check took ${endTime - startTime}ms")
+    logger.info(s"result: $result")
   }
 
-  private def getImages: Map[String, BufferedImage] = {
+  private def getImages: Seq[ImageWithMeta] = {
     val path = new File(getClass.getResource("/images").getPath)
     path
       .listFiles()
       .toSeq
-      .map(f => f.getName)
-      .map(fileName => (fileName, ImageIO.read(new File(s"$path/$fileName"))))
-      .toMap
+      .map(_.getName)
+      .map(fileName => ImageWithMeta(fileName, ImageIO.read(new File(s"$path/$fileName"))))
   }
 
-  private def checkImageDimensions(imageMap: Map[String, BufferedImage]): Unit = {
-    logger.info("checking if image dimensions match")
-    val buffImageList: Seq[BufferedImage] = imageMap.values.toList
-    if ((buffImageList.head.getHeight != buffImageList(1).getHeight) || (buffImageList.head.getWidth != buffImageList(1).getWidth))
-      logger.info("image dimensions are not the same")
-    else
-      logger.info("image dimensions are the same")
-  }
-
-  private def checkDiffPercentage(imageMap: Map[String, BufferedImage]): Unit = {
-    val bothLists = imageMap.unzip
-
-    val imageNameList: Seq[String] = bothLists._1.toSeq
-    logger.info(s"checking the difference between ${imageNameList.head} and ${imageNameList(1)}")
-
-    val imageList: Seq[BufferedImage] = bothLists._2.toSeq
-    val totalPixelCount = imageList.head.getWidth * imageList.head.getHeight
+  private def checkDiffPercentage(imageList: Seq[ImageWithMeta]): String = {
+    val totalPixelCount = imageList.head.image.getWidth * imageList.head.image.getHeight
     var cumulativeDiff = 0
-
-    for (y <- 0 until imageList.head.getHeight) {
-      for (x <- 0 until imageList.head.getWidth) {
-        if (isDifferentRGB(imageList, x, y)) {
+    for (y <- 0 until imageList.head.image.getHeight) {
+      for (x <- 0 until imageList.head.image.getWidth) {
+        if (isDifferentRGB(imageList.head.image, imageList(1).image, x, y)) {
           cumulativeDiff += 1
         }
       }
     }
-
-    val df = new DecimalFormat("##0.00")
-    val diff = df.format(100 - (cumulativeDiff * 100.0f) / totalPixelCount)
-    logger.info(s"% diff is $diff%")
+    formatResult(cumulativeDiff, totalPixelCount)
   }
 
-  private def isDifferentRGB(imageList: Seq[BufferedImage], x: Int, y: Int): Boolean = {
-    if (imageList.head.getRGB(x, y) != imageList(1).getRGB(x, y)) true
+  private def isDifferentRGB(imageA: BufferedImage, imageB: BufferedImage, x: Int, y: Int): Boolean = {
+    if (imageA.getRGB(x, y) != imageB.getRGB(x, y)) true
     else false
+  }
+
+  private def formatResult(cumulativeDiff: Int, totalPixelCount: Int): String = {
+    val df = new DecimalFormat("##0.00")
+    val diff = df.format((cumulativeDiff * 100.0f) / totalPixelCount)
+    s"There is a $diff% difference between the given images"
   }
 }
