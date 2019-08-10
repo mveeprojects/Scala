@@ -33,7 +33,7 @@ object ImageCompareService {
         }
       }
     }
-    formatResult(cumulativeDiff, totalPixelCount)
+    formatResult(cumulativeDiff, totalPixelCount, imageList)
   }
 
   private def isDifferentRGB(imageA: BufferedImage, imageB: BufferedImage, x: Int, y: Int): Boolean = {
@@ -41,9 +41,9 @@ object ImageCompareService {
     else false
   }
 
-  private def formatResult(cumulativeDiff: Int, totalPixelCount: Int): String = {
+  private def formatResult(cumulativeDiff: Int, totalPixelCount: Int, imageList: Seq[ImageWithMeta]): String = {
     val df = new DecimalFormat("##0.00")
     val diff = df.format((cumulativeDiff * 100.0f) / totalPixelCount)
-    s"There is a $diff% difference between the given images"
+    s"There is a $diff% difference between the given images (${imageList.head.imageName} and ${imageList(1).imageName})"
   }
 }
