@@ -14,6 +14,6 @@ object Tuples {
   }
 
   def printTuple(tuple: (Int, String, Double)): Unit = {
-    tuple.productIterator.foreach{i => println(i)}
+    tuple.productIterator.foreach{println}
   }
 }
