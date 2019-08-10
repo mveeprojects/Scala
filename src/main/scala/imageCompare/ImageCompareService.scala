@@ -4,22 +4,14 @@ import java.awt.image.BufferedImage
 import java.io.File
 import java.text.DecimalFormat
 
-import com.typesafe.scalalogging.LazyLogging
 import javax.imageio.ImageIO
 
 case class ImageWithMeta(imageName: String, image: BufferedImage)
 
-object ImageCompareService extends LazyLogging {
+object ImageCompareService {
 
-  def compare(): Unit = {
-    val startTime = System.currentTimeMillis()
-    logger.info("Starting image comparison")
-
-    val result = checkDiffPercentage(getImages)
-
-    val endTime = System.currentTimeMillis()
-    logger.info(s"Diff check took ${endTime - startTime}ms")
-    logger.info(s"result: $result")
+  def compare(): String = {
+    checkDiffPercentage(getImages)
   }
 
   private def getImages: Seq[ImageWithMeta] = {
