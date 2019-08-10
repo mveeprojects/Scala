@@ -10,15 +10,18 @@ import javax.imageio.ImageIO
 object ImageCompareService extends LazyLogging {
 
   def compare(): Unit = {
+    val startTime = System.currentTimeMillis()
     logger.info("Starting image comparison")
     val imageMap = getImages
-    if (imageMap.keys.toList.length != 2) {
-      logger.error(s"Exactly two images are required in the resources/images directory, you have ${imageMap.keys.toList.length} images in this directory currently")
-    }
-    else {
+    if (imageMap.keys.toList.length == 2) {
       checkImageDimensions(imageMap)
       checkDiffPercentage(imageMap)
     }
+    else {
+      logger.error(s"Exactly two images are required in the resources/images directory, you have ${imageMap.keys.toList.length} images in this directory currently")
+    }
+    val endTime = System.currentTimeMillis()
+    logger.info(s"Diff check took ${endTime - startTime}ms")
   }
 
   private def getImages: Map[String, BufferedImage] = {
@@ -58,7 +61,7 @@ object ImageCompareService extends LazyLogging {
       }
     }
 
-    val df = new DecimalFormat( "#,###,###,##0.00" )
+    val df = new DecimalFormat("##0.00")
     val diff = df.format(100 - (cumulativeDiff * 100.0f) / totalPixelCount)
     logger.info(s"% diff is $diff%")
   }
