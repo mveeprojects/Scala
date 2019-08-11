@@ -26,11 +26,10 @@ object ImageCompareService {
   private def checkDiffPercentage(imageList: Seq[ImageWithMeta]): String = {
     val totalPixelCount = imageList.head.image.getWidth * imageList.head.image.getHeight
     var cumulativeDiff = 0
-    for (y <- 0 until imageList.head.image.getHeight) {
-      for (x <- 0 until imageList.head.image.getWidth) {
-        if (isDifferentRGB(imageList.head.image, imageList(1).image, x, y)) {
-          cumulativeDiff += 1
-        }
+    for {y <- 0 until imageList.head.image.getHeight
+         x <- 0 until imageList.head.image.getWidth} {
+      if (isDifferentRGB(imageList.head.image, imageList(1).image, x, y)) {
+        cumulativeDiff += 1
       }
     }
     formatResult(cumulativeDiff, totalPixelCount, imageList)
