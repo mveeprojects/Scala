@@ -24,10 +24,10 @@ object HigherOrderPAFMain extends App {
     val sayHelloFCF = (firstName: String, lastName: String) => s"Hi, my name is $firstName $lastName"
 
     // HOF
-    val myHOFuncc = (stringA: String, stringB: String, func: (String, String) => String) => func(stringA, stringB)
+    val myHOFunc = (stringA: String, stringB: String, func: (String, String) => String) => func(stringA, stringB)
 
     // PAF
-    val sayHiMyNameIs = myHOFuncc(_: String, _: String, sayHelloFCF)
+    val sayHiMyNameIs = myHOFunc(_: String, _: String, sayHelloFCF)
 
     println(sayHiMyNameIs("Mark", "Vallis"))
   }
