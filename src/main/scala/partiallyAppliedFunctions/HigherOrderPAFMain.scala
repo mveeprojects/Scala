@@ -8,7 +8,7 @@ object HigherOrderPAFMain extends App {
   // create a 'higher order' function
   val myHOFunc = (string1: String, string2: String, func: (String, String) => Int) => func(string1, string2)
 
-  // create a 'partially applied' instance of the higher order function
+  // create a 'partially applied function' based on the higher order function
   val partiallyAppliedMyHOFunc = myHOFunc(_: String, _: String , addTwoStrings)
 
   // call the partially applied function
