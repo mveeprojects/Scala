@@ -2,8 +2,9 @@ package partiallyAppliedFunctions
 
 object HigherOrderPAFMain extends App {
 
-  exampleOne()
-  exampleTwo()
+//  exampleOne()
+//  exampleTwo()
+  exampleThree()
 
   def exampleOne(): Unit = {
     // create a 'first class' function
@@ -30,5 +31,36 @@ object HigherOrderPAFMain extends App {
     val sayHiMyNameIs = myHOFunc(_: String, _: String, sayHelloFCF)
 
     println(sayHiMyNameIs("Mark", "Vallis"))
+  }
+
+  def exampleThree(): Unit = {
+
+    // wokring on an example of a HOF receiving a function, which is in turn used to determine which function to return
+
+    // FCF
+    val checkType = (x: Any) => x match {
+      case _: Int => "integer"
+      case _: String => "string"
+      case _ => "unknown"
+    }
+
+    // returnable functions
+    val intPlusOne = (i: Int) => s"${i + 1}"
+    val stringPlusOne = (s: String) => s"$s plus 1"
+    val unknownTypePlusOne = (_: Any) => "not an integer or string"
+
+    // HOF
+    val gimmeATypeToCheck = (x: Any, func: Any => String) => func(x) match {
+      case "integer" => intPlusOne
+      case "string" => stringPlusOne
+      case "unknown" => unknownTypePlusOne
+    }
+
+    // PAF
+    val typeChecker = gimmeATypeToCheck(_: Any, checkType)
+
+    println(typeChecker(1234))
+    println(typeChecker("Bananas"))
+    println(typeChecker(true))
   }
 }
