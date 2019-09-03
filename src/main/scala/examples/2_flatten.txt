@@ -1,0 +1,35 @@
+*** .flatten() ***
+
+Used to pull everything up to the same level
+
+https://alvinalexander.com/scala/how-to-flatten-list-lists-in-scala-with-flatten-method
+
+
+Example 1: Based on Alvin Alexanders' list of lists example
+
+object FlattenMain extends App {
+
+  val listOfLists: List[List[String]] = List(List("OH", "MY", "GOSH"), List("oh", "my", "gosh"))
+  println(s"listOfLists: $listOfLists")
+
+  val flattenedList: List[String] = listOfLists.flatten
+  println(s"flattenedList: $flattenedList")
+}
+
+listOfLists: List(List(OH, MY, GOSH), List(oh, my, gosh))
+flattenedList: List(OH, MY, GOSH, oh, my, gosh)
+
+
+Example 2: Retrieving the value of all instances of 'Some' in a list of Options
+
+object FlattenMain extends App {
+
+  val listOfOptions: List[Option[String]] = List(Some("goldfish"), None, Some("bacon"), None, None, Some("potato"))
+  println(s"listOfLists: $listOfOptions")
+
+  val flattenedList: List[String] = listOfOptions.flatten
+  println(s"flattenedList: $flattenedList")
+}
+
+listOfLists: List(Some(goldfish), None, Some(bacon), None, None, Some(potato))
+flattenedList: List(goldfish, bacon, potato)

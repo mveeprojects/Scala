@@ -1,0 +1,10 @@
+Scala basics, most useful functions (so far)
+
+ * map
+ * flatten
+ * flatMap
+ * filter
+ * zip and unZip
+ * collect
+ * foldLeft/Right
+ * fold

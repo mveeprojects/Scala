@@ -1,14 +1,3 @@
-Scala basics, most useful functions (so far)
-
- * map
- * flatten
- * flatMap
- * filter
- * collect
- * foldLeft/Right
- * fold
-
-
 *** .map() ***
 
 Basic introduction: https://alvinalexander.com/scala/how-to-transform-collections-map-method-anonymous-functions-scala
