@@ -1,10 +1,15 @@
 Scala basics, most useful functions (so far)
 
+Post 1:
  * map
  * flatten
  * flatMap
+
+Post 2:
  * filter
  * zip and unZip
  * collect
+
+Post 3:
  * foldLeft/Right
  * fold

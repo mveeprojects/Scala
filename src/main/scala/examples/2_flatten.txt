@@ -25,7 +25,7 @@ Example 2: Retrieving the value of all instances of 'Some' in a list of Options
 object FlattenMain extends App {
 
   val listOfOptions: List[Option[String]] = List(Some("goldfish"), None, Some("bacon"), None, None, Some("potato"))
-  println(s"listOfLists: $listOfOptions")
+  println(s"listOfOptions: $listOfOptions")
 
   val flattenedList: List[String] = listOfOptions.flatten
   println(s"flattenedList: $flattenedList")

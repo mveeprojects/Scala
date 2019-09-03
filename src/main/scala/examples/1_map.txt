@@ -6,6 +6,7 @@ More advanced: https://alvinalexander.com/scala/fp-book/how-to-write-scala-map-f
 Example usage: performing an operation on each element of a list (e.g. +1 to every item in a list of integers) or to transform between types (e.g. convert a list of integers to a list of doubles, List[Int] => List[Double])
 
 
+
 Example 1: Add bacon to everything!
 
 object PizzaWithBaconMain extends App {
@@ -36,3 +37,21 @@ object StringToIntConverterMain extends App {
 stringNumberList: List(1, 2, 3)
 integerNumberList: List(1, 2, 3)
 
+
+
+Example 3: using the map function on a different data structure (a Map)
+
+object MapOnAMapMain extends App {
+
+  val multiplyByTwo = (i: Int) => i * 2
+
+  val myMap = Map("key1" -> 1, "key2" -> 2).map { keyValue: (String, Int) =>
+    keyValue match {
+      case (key, value) => (key, multiplyByTwo(value))
+    }
+  }
+
+  println(s"myMap: $myMap")
+}
+
+myMap: Map(key1 -> 2, key2 -> 4)

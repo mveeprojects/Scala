@@ -1,0 +1,46 @@
+*** .flatMap() ***
+
+First mapping and then flattening a structure of elements in one function
+
+https://alvinalexander.com/scala/collection-scala-flatmap-examples-map-flatten
+https://www.credera.com/blog/technology-insights/mastering-scala-understanding-map-and-flatmap/
+
+Preamble: Using similar examples to those previously used, flatten followed by map
+
+object FlattenAndThenMapMain extends App {
+
+  val listOfOptions: List[Option[String]] = List(Some("goldfish"), None, Some("bacon"), None, None, Some("potato"))
+  println(s"listOfOptions: $listOfOptions")
+
+  val flattenedList: List[String] = listOfOptions.flatten
+  println(s"flattenedList: $flattenedList")
+
+  val mappedList: List[String] = flattenedList.map(_.toUpperCase)
+  println(s"mappedList: $mappedList")
+}
+
+listOfOptions: List(Some(goldfish), None, Some(bacon), None, None, Some(potato))
+flattenedList: List(goldfish, bacon, potato)
+mappedList: List(GOLDFISH, BACON, POTATO)
+
+
+Example 1: Preamble example using flatMap (inspired heavily by Alvin Alexanders example)
+
+object FlatMapMain extends App {
+
+  val stringList: List[String] = List("goldfish", "blah", "bacon", "blah", "potato")
+  println(s"stringList: $stringList")
+
+  val flatMappedList: List[String] = stringList.flatMap(checkString)
+  println(s"flatMappedList: $flatMappedList")
+
+  def checkString(s: String): Option[String] = {
+    if (s == "blah") {
+      None
+    } else Some(s.toUpperCase)
+  }
+}
+
+stringList: List(goldfish, blah, bacon, blah, potato)
+flatMappedList: List(GOLDFISH, BACON, POTATO)
+
