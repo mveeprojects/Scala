@@ -1,0 +1,49 @@
+Scala basics, most useful functions (so far)
+
+ * map
+ * flatten
+ * flatMap
+ * filter
+ * collect
+ * foldLeft/Right
+ * fold
+
+
+*** .map() ***
+
+Basic introduction: https://alvinalexander.com/scala/how-to-transform-collections-map-method-anonymous-functions-scala
+More advanced: https://alvinalexander.com/scala/fp-book/how-to-write-scala-map-function
+
+Example usage: performing an operation on each element of a list (e.g. +1 to every item in a list of integers) or to transform between types (e.g. convert a list of integers to a list of doubles, List[Int] => List[Double])
+
+
+Example 1: Add bacon to everything!
+
+object PizzaWithBaconMain extends App {
+
+  val pizzaList: List[String] = List("pepperoni", "hawaiian", "margherita")
+  println(s"pizzaList: $pizzaList")
+
+  val baconPizzaList: List[String] = pizzaList.map(_ + " with bacon")
+  println(s"baconPizzaList: $baconPizzaList")
+}
+
+pizzaList: List(pepperoni, hawaiian, margherita)
+baconPizzaList: List(pepperoni with bacon, hawaiian with bacon, margherita with bacon)
+
+
+
+Example 2: Convert String representation of integers to Ints (perform the toInt function on all elements of the list)
+
+object StringToIntConverterMain extends App {
+
+  val stringNumberList: List[String] = List("1", "2", "3")
+  println(s"stringNumberList: $stringNumberList")
+
+  val integerNumberList: List[Int] = stringNumberList.map(_.toInt)
+  println(s"integerNumberList: $integerNumberList")
+}
+
+stringNumberList: List(1, 2, 3)
+integerNumberList: List(1, 2, 3)
+
