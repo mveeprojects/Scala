@@ -6,19 +6,20 @@ Source: http://www.scalatest.org/user_guide/selecting_a_style
 
 __FunSuite - xUnit testing__
 ``` 
-class SomeSpec extends FunSpec {
+class SomeSpec extends FunSuite {
   test("test name goes here") { 
     test code goes here 
   }
 }
 ```
 
-__FlatSpec - BDD testing__
+__FunSpec - BDD testing__
 ```
-class SomeSpec extends FlatSpec {
-  "something" should "do something useful" in { 
-    test code goes here 
-  }
+class SomeSpec extends FunSpec {               
+ describe("A Stack") {
+   it("should pop values in last-in-first-out order") (pending)
+   it("should throw NoSuchElementException if an empty stack is popped") (pending)
+ }
 }
 ```
 
