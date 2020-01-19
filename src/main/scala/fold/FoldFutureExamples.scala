@@ -19,7 +19,7 @@ object FoldFutureExamples extends App {
     acc + num
   }
 
-  futureFold.onComplete{
+  futureFold.onComplete {
     case Success(value) => println(value)
     case Failure(exception) => println(s"Exception caught: ${exception.getMessage}")
   }
@@ -34,6 +34,7 @@ object AllAboutScalaExample extends App {
   private val AVAILABLE_DONUT = "Vanilla donut"
 
   println("Step 1: Define a method which returns a Future Option")
+
   def donutStock(donut: String): Future[Option[Int]] = Future {
     println("checking donut stock")
     if (donut == AVAILABLE_DONUT) Some(10) else None
