@@ -4,18 +4,18 @@ object FlatMaps extends App {
 
   val stringList = List("apple", "banana", "orange")
 
-  println("Flatmap - think map then flatten or \"mapFlat\"")
+  println("Flatmap - think map then flatten or \"mapFlat\"") // A P P L E ...
   stringList.flatMap(_.toUpperCase).foreach(println)
 
-  println("Map")
+  println("Map") // APPLE BANANA ORANGE
   val mappedList = stringList.map(_.toUpperCase)
   mappedList.foreach(println)
 
-  println("Flatten")
+  println("Flatten") // a p p l e ...
   val flattenedList = stringList.flatten
   flattenedList.foreach(println)
 
-  println("\"Manual\" Flatmap")
+  println("\"Manual\" Flatmap") // A P P L E ...
   stringList.map(_.toUpperCase).flatten.foreach(println)
 }
 
