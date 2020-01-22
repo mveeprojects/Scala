@@ -10,8 +10,8 @@ case class Meta(name: String, md5: String, length: String)
 
 object Application extends App {
 
-  implicit val fooDecoder: Decoder[Meta] = deriveDecoder
-  implicit val fooEncoder: Encoder[Meta] = deriveEncoder
+  // semi-auto decoding
+  implicit val metaDecoder: Decoder[Meta] = deriveDecoder
 
   val rawJson =
     """
