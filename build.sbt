@@ -7,6 +7,7 @@ lazy val akkaVersion = "2.5.22"
 lazy val scalaLoggingVersion = "3.9.0"
 lazy val logbackVersion = "1.2.3"
 lazy val macwireVersion = "2.3.1"
+lazy val circeVersion = "0.12.3"
 val scalaCodeVersion = "2.12.6"
 
 lazy val root = (project in file(".")).
@@ -25,7 +26,8 @@ lazy val root = (project in file(".")).
     libraryDependencies ++= autowiringDependencies,
     libraryDependencies ++= scalatraDependencies,
     libraryDependencies ++= kafkaDependencies,
-    libraryDependencies ++= alpakkaDependencies
+    libraryDependencies ++= alpakkaDependencies,
+    libraryDependencies ++= circeDependencies
   )
 
 val loggingDepenencies = Seq(
@@ -83,4 +85,9 @@ val alpakkaDependencies = Seq(
   "com.typesafe.akka" %% "akka-stream-kafka" % "0.22",
   "org.apache.kafka" % "kafka-clients" % "2.1.1",
   "org.scala-lang" % "scala-library" % scalaCodeVersion
+)
+
+val circeDependencies = Seq(
+  "io.circe" %% "circe-parser" % circeVersion,
+  "io.circe" %% "circe-generic" % circeVersion
 )
