@@ -84,7 +84,10 @@ val kafkaDependencies = Seq(
 val alpakkaDependencies = Seq(
   "com.typesafe.akka" %% "akka-stream-kafka" % "0.22",
   "org.apache.kafka" % "kafka-clients" % "2.1.1",
-  "org.scala-lang" % "scala-library" % scalaCodeVersion
+  "org.scala-lang" % "scala-library" % scalaCodeVersion,
+  "com.lightbend.akka" %% "akka-stream-alpakka-file" % "1.0-M1",
+  "com.lightbend.akka" %% "akka-stream-alpakka-ftp" % "1.0-M1",
+  "com.jcraft" % "jsch" % "0.1.55"
 )
 
 val circeDependencies = Seq(
