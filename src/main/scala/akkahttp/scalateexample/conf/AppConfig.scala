@@ -1,4 +1,4 @@
-package akkahttp.conf
+package akkahttp.scalateexample.conf
 
 import com.typesafe.config.ConfigFactory
 

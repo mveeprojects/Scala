@@ -7,6 +7,7 @@ lazy val akkaVersion = "2.5.22"
 lazy val scalaLoggingVersion = "3.9.0"
 lazy val logbackVersion = "1.2.3"
 lazy val macwireVersion = "2.3.1"
+lazy val cucumberVersion = "2.0.1"
 lazy val circeVersion = "0.12.3"
 val scalaCodeVersion = "2.12.6"
 
@@ -47,7 +48,11 @@ val akkaDependencies = Seq(
 )
 
 val testingDependencies = Seq(
-  "org.scalatest" %% "scalatest" % "3.0.1" % Test
+  "org.scalatest" %% "scalatest" % "3.0.1" % Test,
+  "io.cucumber" % "cucumber-core" % cucumberVersion,
+  "io.cucumber" % "cucumber-junit" % cucumberVersion,
+  "io.cucumber" %% "cucumber-scala" % cucumberVersion,
+  "io.cucumber" % "cucumber-jvm" % cucumberVersion
 )
 
 val webScraperDependencies = Seq(

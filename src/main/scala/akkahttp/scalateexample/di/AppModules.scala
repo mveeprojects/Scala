@@ -1,9 +1,9 @@
-package akkahttp.di
+package akkahttp.scalateexample.di
 
 import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server.Route
-import akkahttp.conf.AppConfig
-import akkahttp.routes.{AppAdminRoutes, AppRoutes}
+import akkahttp.scalateexample.conf.AppConfig
+import akkahttp.scalateexample.routes.{AppAdminRoutes, AppRoutes}
 
 trait AppModules {
 
