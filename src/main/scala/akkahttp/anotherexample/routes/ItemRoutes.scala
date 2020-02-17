@@ -1,10 +1,10 @@
-package routes
+package akkahttp.anotherexample.routes
 
 import akka.http.scaladsl.model.StatusCodes
 import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server.Route
-import di.AppModules
-import models.Item
+import akkahttp.anotherexample.di.AppModules
+import akkahttp.anotherexample.models.Item
 import net.liftweb.json.DefaultFormats
 import net.liftweb.json.Serialization.write
 

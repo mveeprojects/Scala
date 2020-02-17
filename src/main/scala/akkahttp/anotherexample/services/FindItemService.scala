@@ -1,8 +1,8 @@
-package services
+package akkahttp.anotherexample.services
 
 import akka.actor.ActorSystem
 import akka.stream.ActorMaterializer
-import models.Item
+import akkahttp.anotherexample.models.Item
 
 import scala.concurrent.{ExecutionContextExecutor, Future}
 
