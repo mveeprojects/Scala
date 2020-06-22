@@ -1,7 +1,7 @@
 package akkahttp.anotherexample.di
 
 import akkahttp.anotherexample.routes.ItemRoutes
-import services.FindItemService
+import akkahttp.anotherexample.services.FindItemService
 
 trait AppModules {
 

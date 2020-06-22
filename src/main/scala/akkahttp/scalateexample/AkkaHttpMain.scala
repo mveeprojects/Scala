@@ -1,4 +1,13 @@
-package akkahttp.scalateexample;
+package akkahttp.scalateexample
+
+import akka.actor.ActorSystem
+import akka.http.scaladsl.Http
+import akka.stream.ActorMaterializer
+import akkahttp.scalateexample.di.AppModules
+import com.typesafe.scalalogging.LazyLogging
+
+import scala.concurrent.{ExecutionContextExecutor, Future}
+import scala.util.{Failure, Success}
 
 object AkkaHttpMain extends AppModules with LazyLogging {
 
