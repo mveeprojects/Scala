@@ -21,3 +21,19 @@ object FoldListExamples extends App {
   val donutLine: (String, String) => String = (acc, newDonut) => acc + newDonut + " donut "
   println(donuts.fold("")(donutLine)) // Plain donut Strawberry donut Glazed donut
 }
+
+object FoldEmptyListExample extends App {
+  println("Fold allows us to handle empty lists by always providing an initial value to be returned")
+  val emptyIntList = List.empty[Int]
+  val result1 = emptyIntList.fold(0)(_+_)
+  println(result1)
+
+  val concatenateBlahStringFunc = (a: String, b: String) => a + " blah " + b
+  val emptyStringList = List.empty[String]
+  val result2 = emptyStringList.fold("hi")(concatenateBlahStringFunc)
+  println(result2)
+
+  val nonEmptyStringList = List("a", "b", "c")
+  val result3 = nonEmptyStringList.fold("hi")(concatenateBlahStringFunc)
+  println(result3)
+}
