@@ -23,7 +23,7 @@ object ScalaFTPMain extends App {
       client.login("mark", "pass")
       println("*** Connected to FTP ***")
     } catch {
-      case e: IOException => println("exception thrown trying to connect to FTP server")
+      case _: IOException => println("exception thrown trying to connect to FTP server")
     }
   }
 
@@ -38,20 +38,18 @@ object ScalaFTPMain extends App {
 
   private def retrieveFiles(fileList: Seq[FTPFile]): Unit = {
     for (file <- fileList) {
+      val out = new BufferedOutputStream(new FileOutputStream(localPathPrefix + file.getName))
       try {
-        val out = new BufferedOutputStream(new FileOutputStream(localPathPrefix + file.getName))
-        try {
-          var result = client.retrieveFile(file.getName, out)
-          if (result) {
-            result = true
-            println(localPathPrefix + file.getName)
-          }
-        } catch {
-          case e: Exception =>
-            println("error", e)
-        } finally {
-          if (out != null) out.close()
+        var result = client.retrieveFile(file.getName, out)
+        if (result) {
+          result = true
+          println(localPathPrefix + file.getName)
         }
+      } catch {
+        case e: Exception =>
+          println("error", e)
+      } finally {
+        if (out != null) out.close()
       }
     }
   }
