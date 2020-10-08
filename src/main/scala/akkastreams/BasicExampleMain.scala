@@ -13,11 +13,15 @@ object BasicExampleMain extends App {
   implicit val materializer: ActorMaterializer = ActorMaterializer()
   implicit val ec: ExecutionContextExecutor = system.dispatcher
 
-  val source = Source(1 to 10)
+  val source = Source(1 to 3)
   val sink = Sink.fold[Int, Int](0)(_ + _)
   val runnableGraph: RunnableGraph[Future[Int]] = source.toMat(sink)(Keep.right)
 
+  val result2 = source.runWith(sink)
+
   val result: Future[Int] = runnableGraph.run()
+  // Alternatively you can omit the line above using runnableGraph and use runWith here instead
+  // val result = source.runWith(sink)
 
   result.map(println)
 }
