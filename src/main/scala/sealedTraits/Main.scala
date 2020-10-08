@@ -15,7 +15,8 @@ object Main extends App {
   // [warn]                                                  ^
 
   def printSkateboard(board: Skateboard): Unit = board match {
-    case TrickStick(width, length) => println(s"Trickstick, width: $width, length: $length")
-    case Cruiser(width, length) => println(s"Cruiser, width: $width, length: $length")
+    case TrickStick(width, length, name) => println(s"$name, width: $width, length: $length")
+    case Cruiser(width, length, name) => println(s"$name, width: $width, length: $length")
+    case LongBoard(width, length, name) => println(s"$name, width: $width, length: $length")
   }
 }
