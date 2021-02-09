@@ -1,6 +1,7 @@
-package kafka
+package kafka.avro
 
 import com.sksamuel.avro4s.{AvroSchema, ToRecord}
+import com.typesafe.scalalogging.LazyLogging
 import io.confluent.kafka.schemaregistry.client.{CachedSchemaRegistryClient, SchemaRegistryClient}
 import io.confluent.kafka.serializers.AbstractKafkaAvroSerDeConfig._
 import io.confluent.kafka.serializers.KafkaAvroSerializer
@@ -12,25 +13,24 @@ import org.apache.kafka.common.serialization.{Serializer => KafkaSerializer}
 
 import java.util
 import java.util.Properties
+import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.duration._
+import scala.concurrent.{Await, Future}
 import scala.jdk.CollectionConverters._
+import scala.util.{Failure, Success}
 
-case class Person(name: String, age: Int)
-
-object Person {
-  implicit val personToRecord: ToRecord[Person] = ToRecord[Person]
-}
-
-object AvroProducer extends App {
+object AvroProducer extends App with LazyLogging {
+  val kafkaUrl                                 = "localhost:9093"
   val schemaRegistryUrl                        = "http://localhost:8081"
   val topic: String                            = "person-topic"
   val schema: Schema                           = AvroSchema[Person]
   val props: Properties                        = setupKafkaProps
-  val kafkaAvroSerializer: KafkaAvroSerializer = configureSerializer
+  val kafkaAvroSerializer: KafkaAvroSerializer = configureAvroSerializer
   val person: Person                           = Person("Mark", 21)
 
   writeToKafka(person)
 
-  def writeToKafka(person: Person)(implicit personToRecord: ToRecord[Person]): Unit = {
+  private def writeToKafka(person: Person)(implicit personToRecord: ToRecord[Person]): Unit = {
 
     personSerializer((topic, person: Person) => kafkaAvroSerializer.serialize(topic, personToRecord.to(person)))
 
@@ -40,20 +40,34 @@ object AvroProducer extends App {
     genericPerson.put("name", person.name)
     genericPerson.put("age", person.age)
 
-    producer.send(new ProducerRecord(topic, genericPerson))
-    producer.close()
+    val record: ProducerRecord[String, GenericRecord] = new ProducerRecord(topic, genericPerson)
+
+    val sendFuture = Future {
+      logger.info("Sending record to Kafka")
+      producer.send(record)
+      logger.info("Record sent to Kafka")
+    }
+
+    Await.ready(sendFuture, 2.seconds).value.get match {
+      case Success(_) =>
+        logger.info("Published record to Kafka successfully")
+        producer.close()
+      case Failure(exception) =>
+        logger.error(s"Publishing failed with exception: ${exception.getMessage}")
+        producer.close()
+    }
   }
 
   private def setupKafkaProps: Properties = {
     val props: Properties = new Properties()
-    props.put("bootstrap.servers", "localhost:9093")
+    props.put("bootstrap.servers", kafkaUrl)
     props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer")
     props.put("value.serializer", "io.confluent.kafka.serializers.KafkaAvroSerializer")
     props.put("schema.registry.url", schemaRegistryUrl)
     props
   }
 
-  private def configureSerializer: KafkaAvroSerializer = {
+  private def configureAvroSerializer: KafkaAvroSerializer = {
     val schemaRegistryClient: SchemaRegistryClient =
       new CachedSchemaRegistryClient(schemaRegistryUrl, 100)
 
