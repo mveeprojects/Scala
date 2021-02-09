@@ -19,20 +19,17 @@ object FlatMaps extends App {
   stringList.map(_.toUpperCase).flatten.foreach(println)
 }
 
-
 object FlatMapsOnOptions extends App {
 
   val maybeIntList = List("1", "seven", "6", "12")
 
   maybeIntList.flatMap(toInt).foreach(println)
 
-  def toInt(s: String): Option[Int] = {
-    try {
-      Some(s.toInt)
-    } catch {
+  def toInt(s: String): Option[Int] =
+    try Some(s.toInt)
+    catch {
       case _: Exception => None
     }
-  }
 }
 
 object FlatMapListOfSeqs extends App {

@@ -11,17 +11,16 @@ object TimingFutureExample extends App with LazyLogging {
   myFancyFunction()
   Thread.sleep(10)
 
-  def myFancyFunction(): Unit ={
+  def myFancyFunction(): Unit = {
     val myFutureThing = Future {
       Random.nextInt(500)
     }
 
     myFutureThing.onComplete {
-      case Success(value) => {
+      case Success(value) =>
         val starttime = System.currentTimeMillis()
         println(s"value: $value")
         println(s"took ${System.currentTimeMillis() - starttime}ms to complete")
-      }
       case Failure(exception) =>
         println("damn")
     }

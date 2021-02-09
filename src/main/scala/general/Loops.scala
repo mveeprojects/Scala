@@ -37,9 +37,8 @@ object Loops {
 
   def forLoop(): Unit = {
     println("\nFor loop")
-    for (i <- 1 to 10) {
+    for (i <- 1 to 10)
       print(i + "\t")
-    }
     print("\n")
   }
 
@@ -60,8 +59,9 @@ object Loops {
 
   def forLoopWithConditional(): Unit = {
     println("\nLoop with conditionals")
-    var evenList = for {i <- 1 to 20
-                        if (i % 2) == 0
+    var evenList = for {
+      i <- 1 to 20
+      if (i % 2) == 0
     } yield i
 
     for (i <- evenList)
@@ -71,31 +71,30 @@ object Loops {
 
   def nestedForLoop(): Unit = {
     println("\nNested for loops")
-    for (i <- 1 to 6; j <- 2 to 7)
-      println("i = " + i + " j = " + j)
+    for {
+      i <- 1 to 6
+      j <- 2 to 7
+    } println("i = " + i + " j = " + j)
     print("\n")
   }
 
   def breakingOutOfLoops(): Unit = {
     println("\nBreaking out of loops")
     val primeList = List(1, 2, 3, 5, 7)
-    for (i <- primeList) {
+    for (i <- primeList)
       if (i == 5) {
         print("time to break out of this loop\n")
         return
-      }
-      else if (i != 1)
+      } else if (i != 1)
         print(i + "\t")
-    }
     print("\n")
   }
 
   def loopingOverVarArgs(args: Int*): Unit = {
     println("\nIterating over a variable number of arguments")
     var sum: Int = 0
-    for (i <- args) {
+    for (i <- args)
       sum += i
-    }
     print(sum + "\n")
   }
 }

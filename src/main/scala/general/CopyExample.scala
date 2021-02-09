@@ -1,9 +1,8 @@
 package general
 
 case class Person(name: String, age: Int) {
-  override def toString: String = {
+  override def toString: String =
     s"$name is $age years old"
-  }
 }
 
 object CopyExample extends App {

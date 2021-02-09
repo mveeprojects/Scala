@@ -4,8 +4,8 @@ import scala.collection.mutable.ArrayBuffer
 
 object Arrays {
 
-  val people = new Array[String](6)
-  val numbers = Array(4, 7, 2, 12)
+  val people: Array[String] = new Array[String](6)
+  val numbers: Array[Int] = Array(4, 7, 2, 12)
 
   def main(args: Array[String]): Unit = {
     populateArray()
@@ -41,10 +41,21 @@ object Arrays {
     print("\n")
   }
 
+  private def printArray(arr: Array[String]): Unit = {
+    println("Printing array with ordinary for loop")
+    for (i <- arr.indices)
+      println(i + " " + arr(i) + "\t")
+  }
+
   private def transformDataInArray(): Unit = {
     val newPeopleList = for (person <- people) yield person + " is a person"
     printArrayForEach(newPeopleList)
     print("\n")
+  }
+
+  private def printArrayForEach(arr: Array[String]): Unit = {
+    println("Printing array with foreach loop")
+    arr.foreach(println)
   }
 
   private def functionalArrayCreation(): Unit = {
@@ -54,14 +65,21 @@ object Arrays {
   }
 
   private def multiDimensionalArray(): Unit = {
-    var multiDimArray = Array.ofDim[Int](10, 10)
-    for (i <- 0 to 9) {
-      for (j <- 0 to 9) {
+    val multiDimArray = Array.ofDim[Int](10, 10)
+    for (i <- 0 to 9)
+      for (j <- 0 to 9)
         multiDimArray(i)(j) = i * j
-      }
-    }
     printMultiDimArray(multiDimArray)
     print("\n")
+  }
+
+  private def printMultiDimArray(arr: Array[Array[Int]]): Unit = {
+    println("Printing multi-dimensional array")
+    for (i <- 0 to 9) {
+      for (j <- 0 to 9)
+        print(arr(i)(j) + "\t")
+      println()
+    }
   }
 
   private def sumMinMaxArrayValues(arr: Array[Int]): Unit = {
@@ -81,26 +99,5 @@ object Arrays {
     val sortArrAscending = arr.sortWith(_ < _)
     println(sortArrAscending.deep.mkString(", "))
     print("\n")
-  }
-
-  private def printArray(arr: Array[String]): Unit = {
-    println("Printing array with ordinary for loop")
-    for (i <- arr.indices)
-      println(i + " " + arr(i) + "\t")
-  }
-
-  private def printArrayForEach(arr: Array[String]): Unit = {
-    println("Printing array with foreach loop")
-    arr.foreach(println)
-  }
-
-  private def printMultiDimArray(arr: Array[Array[Int]]): Unit = {
-    println("Printing multi-dimensional array")
-    for (i <- 0 to 9) {
-      for (j <- 0 to 9) {
-        print(arr(i)(j) + "\t")
-      }
-      println()
-    }
   }
 }

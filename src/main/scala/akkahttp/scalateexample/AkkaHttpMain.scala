@@ -11,8 +11,8 @@ import scala.util.{Failure, Success}
 
 object AkkaHttpMain extends AppModules with LazyLogging {
 
-  implicit val system: ActorSystem = ActorSystem("my-actor-system")
-  implicit val materializer: ActorMaterializer = ActorMaterializer()
+  implicit val system: ActorSystem                        = ActorSystem("my-actor-system")
+  implicit val materializer: ActorMaterializer            = ActorMaterializer()
   implicit val executionContext: ExecutionContextExecutor = system.dispatcher
 
   def main(args: Array[String]) {
@@ -25,7 +25,6 @@ object AkkaHttpMain extends AppModules with LazyLogging {
     }
   }
 
-  def bind: Future[Http.ServerBinding] = {
+  def bind: Future[Http.ServerBinding] =
     Http().bindAndHandle(allRoutes, appConfig.hostname, appConfig.port)
-  }
 }

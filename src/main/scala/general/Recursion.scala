@@ -7,10 +7,9 @@ object Recursion {
     println("The factorial of " + num + " is: " + factorial(num))
   }
 
-  def factorial(num: BigInt): BigInt = {
-    if(num <= 1)
+  def factorial(num: BigInt): BigInt =
+    if (num <= 1)
       1
     else
-      num * factorial(num -1)
-  }
+      num * factorial(num - 1)
 }

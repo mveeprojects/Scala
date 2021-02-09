@@ -11,9 +11,9 @@ object ScalaWS extends App {
   printAll(getHTMLBody)
 
   def getHTMLBody: List[String] = {
-    val browser = JsoupBrowser()
+    val browser                   = JsoupBrowser()
     val doc: browser.DocumentType = browser.get(url)
-    val items = doc >> elementList("tr td")
+    val items                     = doc >> elementList("tr td")
     items.map(_ >> allText("a")).filter(_.nonEmpty).drop(1)
   }
 

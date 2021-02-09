@@ -3,11 +3,10 @@ package either
 class PersonUsingCompanionObject {
 
   var name: String = ""
-  var age: Int = 0
+  var age: Int     = 0
 
-  override def toString: String = {
+  override def toString: String =
     "Name: %s, Age: %d".format(this.name, this.age)
-  }
 }
 
 object PersonUsingCompanionObject {

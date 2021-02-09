@@ -4,13 +4,12 @@ import scala.io.StdIn
 
 object Getting_Console_Input {
 
-  def main(args: Array[String]): Unit = {
+  def main(args: Array[String]): Unit =
     checkConsoleInput()
-  }
 
   def checkConsoleInput(): Unit = {
 
-    var playersGuess = 0
+    var playersGuess  = 0
     var numberToGuess = 12
 
     do {

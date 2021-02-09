@@ -1,4 +1,4 @@
-# First Class Functions vs Higher Order Functions 
+# First Class Functions vs Higher Order Functions
 
 https://stackoverflow.com/questions/10141124/any-difference-between-first-class-function-and-high-order-function
 

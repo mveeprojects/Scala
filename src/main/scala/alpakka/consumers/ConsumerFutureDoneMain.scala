@@ -1,7 +1,5 @@
 package alpakka.consumers
 
-import java.nio.charset.StandardCharsets
-
 import akka.Done
 import akka.kafka.scaladsl.Consumer
 import akka.kafka.scaladsl.Consumer.DrainingControl
@@ -12,6 +10,7 @@ import com.typesafe.scalalogging.LazyLogging
 import org.apache.kafka.clients.consumer.ConsumerConfig
 import org.apache.kafka.common.serialization.{ByteArrayDeserializer, StringDeserializer}
 
+import java.nio.charset.StandardCharsets
 import scala.concurrent.Future
 
 object ConsumerFutureDoneMain extends App with AlpConfig with LazyLogging {

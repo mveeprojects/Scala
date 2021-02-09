@@ -1,11 +1,11 @@
 package kafka
 
-import java.util
-import java.util.Properties
-
 import org.apache.kafka.clients.consumer.KafkaConsumer
 
-import scala.collection.JavaConverters._
+import java.time.Duration
+import java.util
+import java.util.Properties
+import scala.jdk.CollectionConverters.iterableAsScalaIterableConverter
 
 object Consumer extends App {
 
@@ -21,7 +21,7 @@ object Consumer extends App {
     val consumer: KafkaConsumer[String, String] = new KafkaConsumer[String, String](props)
     consumer.subscribe(util.Arrays.asList(topic))
     while (true) {
-      val record = consumer.poll(1000).asScala
+      val record = consumer.poll(Duration.ofSeconds(1)).asScala
       for (data <- record.iterator)
         println(data.value())
     }

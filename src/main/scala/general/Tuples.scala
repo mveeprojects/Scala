@@ -11,14 +11,13 @@ object Tuples extends App {
     printTuple(tupleMarge)
   }
 
-  def printTuple(tuple: (Int, String, Double)): Unit = {
+  def printTuple(tuple: (Int, String, Double)): Unit =
     tuple.productIterator.foreach {
       println
     }
-  }
 
   def tupleExampleWithNamedParams(): Unit = {
-    val (name, age, p) = ("Markk", 322, new Person("Mark", 32))
+    val (name, age, p) = ("Markk", 322, Person("Mark", 32))
     println(p.toString())
     println(name)
     println(age)

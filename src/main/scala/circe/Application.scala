@@ -41,7 +41,7 @@ object Application extends App {
   // Decoding to case class
   val result: Either[Error, Meta] = decode[Meta](rawJson)
   result match {
-    case Left(ex) => println(s"Error creating case class: \n ${ex.getMessage}")
+    case Left(ex)    => println(s"Error creating case class: \n ${ex.getMessage}")
     case Right(meta) => println(s"${meta.name}, ${meta.md5}. ${meta.length}")
   }
 }

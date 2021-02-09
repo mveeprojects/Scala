@@ -1,8 +1,8 @@
 package tryCatch
 
-import java.io.IOException
-
 import com.typesafe.scalalogging.LazyLogging
+
+import java.io.IOException
 
 object TryCatchMain extends App with LazyLogging {
 

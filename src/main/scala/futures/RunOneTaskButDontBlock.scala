@@ -21,7 +21,7 @@ object RunOneTaskButDontBlock extends App {
     //  onComplete sets up the callback
     myFuture.onComplete {
       case Success(value) => println("Finally, the callback completed, the value is ... " + value)
-      case Failure(e) => e.printStackTrace()
+      case Failure(e)     => e.printStackTrace()
     }
 
     println("A ...")
@@ -49,12 +49,12 @@ object RunOneTaskButDontBlock extends App {
       if (Random.nextInt(500) > 250) throw new Exception("Too slow") else 42
     }
 
-    myFuture.onSuccess {
-      case result => println(result)
+    myFuture.onSuccess { case result =>
+      println(result)
     }
 
-    myFuture.onFailure {
-      case ex => println(s"Exception thrown -> ${ex.getMessage}")
+    myFuture.onFailure { case ex =>
+      println(s"Exception thrown -> ${ex.getMessage}")
     }
 
     Thread.sleep(1000)

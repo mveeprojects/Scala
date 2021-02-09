@@ -11,15 +11,7 @@ object SomeNoneExample extends App {
     println("Number checking example:")
     toInt(in) match {
       case Some(i) => println(i)
-      case None => println(in + " isn't a number")
-    }
-  }
-
-  def toInt(in: String): Option[Int] = {
-    try {
-      Some(Integer.parseInt(in.trim))
-    } catch {
-      case e: NumberFormatException => None
+      case None    => println(in + " isn't a number")
     }
   }
 
@@ -32,7 +24,7 @@ object SomeNoneExample extends App {
 
   def findInMapIfExists(x: Option[String]): String = x match {
     case Some(s) => s
-    case None => "?"
+    case None    => "?"
   }
 
   def getOrElseExample(): Unit = {
@@ -53,6 +45,12 @@ object SomeNoneExample extends App {
     println("is c empty? " + c.isEmpty)
   }
 
+  def toInt(in: String): Option[Int] =
+    try Some(Integer.parseInt(in.trim))
+    catch {
+      case e: NumberFormatException => None
+    }
+
   def mappingExample(): Unit = {
     val input = List(1, 2, 3, 4, 5, 6)
     input
@@ -60,7 +58,6 @@ object SomeNoneExample extends App {
       .foreach(println)
   }
 
-  def timesByTwo(a: Int): Int = {
+  def timesByTwo(a: Int): Int =
     a * 2
-  }
 }

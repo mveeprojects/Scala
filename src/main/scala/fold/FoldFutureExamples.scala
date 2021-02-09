@@ -1,7 +1,6 @@
 package fold
 
 import java.lang.Thread.sleep
-
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 import scala.util.{Failure, Random, Success}
@@ -10,17 +9,18 @@ object FoldFutureExamples extends App {
 
   val numberList = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12)
 
-  val timesTwo: Int => Future[Int] = a => Future {
-    sleep(Random.nextInt(200))
-    a * 2
-  }
+  val timesTwo: Int => Future[Int] = a =>
+    Future {
+      sleep(Random.nextInt(200))
+      a * 2
+    }
 
   val futureFold = Future.foldLeft(numberList.map(timesTwo(_)))(0) { case (acc, num) =>
     acc + num
   }
 
   futureFold.onComplete {
-    case Success(value) => println(value)
+    case Success(value)     => println(value)
     case Failure(exception) => println(s"Exception caught: ${exception.getMessage}")
   }
 
@@ -54,7 +54,7 @@ object AllAboutScalaExample extends App {
   }
 
   futureFoldLeft.onComplete {
-    case Success(value) => println(s"Result: $value")
+    case Success(value)     => println(s"Result: $value")
     case Failure(exception) => println(s"Exception: ${exception.getMessage}")
   }
 

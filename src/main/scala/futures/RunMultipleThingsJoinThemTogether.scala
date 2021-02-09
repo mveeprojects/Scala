@@ -1,7 +1,6 @@
 package futures
 
 import java.lang.Thread._
-
 import scala.collection.mutable.ListBuffer
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration._
@@ -11,8 +10,9 @@ import scala.util.Random
 
 object RunMultipleThingsJoinThemTogetherMoreEfficiently extends App {
   val outputList = ListBuffer[Int]()
-  val inputList = List(1, 2, 3)
-  Future.sequence(inputList.map(CallAndReturnStatusCode.fireRequest))
+  val inputList  = List(1, 2, 3)
+  Future
+    .sequence(inputList.map(CallAndReturnStatusCode.fireRequest))
     .foreach(res => outputList ++= res)
   sleep(2000)
 
@@ -36,14 +36,13 @@ object RunMultipleThingsJoinThemTogether extends App {
 }
 
 object CreateListOfIntsFromFutures extends App {
-  val inputList = List(1, 2, 3)
+  val inputList   = List(1, 2, 3)
   val statusCodes = getStatusCodeList
-  Await.result(statusCodes, 1 seconds)
+  Await.result(statusCodes, 1.seconds)
   statusCodes.foreach(sc => println(s"Status codes: $sc"))
 
-  def getStatusCodeList: Future[List[Int]] = {
+  def getStatusCodeList: Future[List[Int]] =
     Future.sequence(inputList.map(CallAndReturnStatusCode.fireRequest))
-  }
 
   sleep(1000)
 }

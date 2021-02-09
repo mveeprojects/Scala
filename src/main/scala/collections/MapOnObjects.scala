@@ -16,13 +16,12 @@ object MapOnObjects extends App {
     .map(checkRequestProposition)
     .foreach(req => println(req.proposition))
 
-  def checkRequestProposition(request: MyRequest): MyRequest = {
+  def checkRequestProposition(request: MyRequest): MyRequest =
     if (propositionMap.contains(request.proposition)) {
       request.copy(request.territory, propositionMap(request.proposition), request.language)
     } else {
       request
     }
-  }
 }
 
 case class MyRequest(territory: String, proposition: String, language: String)

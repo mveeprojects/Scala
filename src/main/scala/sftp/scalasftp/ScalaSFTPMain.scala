@@ -1,15 +1,14 @@
 package sftp.scalasftp
 
-import java.util.Properties
-
 import com.jcraft.jsch.{ChannelSftp, JSch}
 
+import java.util.Properties
 
 object ScalaSFTPMain extends App {
 
-  private val localPathPrefix = "target/"
+  private val localPathPrefix  = "target/"
   private val remotePathPrefix = "upload/"
-  private val config = new Properties
+  private val config           = new Properties
 
   openSFTPConnection()
 

@@ -6,9 +6,9 @@ import scala.language.postfixOps
 
 object mongo extends App {
 
-  val mongoClient: MongoClient = MongoClient()
-  val database: MongoDatabase = mongoClient.getDatabase("mydb")
-  val collection: MongoCollection[Document] = database.getCollection("test");
+  val mongoClient: MongoClient              = MongoClient()
+  val database: MongoDatabase               = mongoClient.getDatabase("mydb")
+  val collection: MongoCollection[Document] = database.getCollection("test")
 
   val document: Document = Document("_id" -> 1, "x" -> 1)
 
@@ -16,8 +16,8 @@ object mongo extends App {
 
   insertObservable.subscribe(new Observer[Completed] {
     override def onNext(result: Completed): Unit = println(s"onNext: $result")
-    override def onError(e: Throwable): Unit = println(s"onError: $e")
-    override def onComplete(): Unit = println("onComplete")
+    override def onError(e: Throwable): Unit     = println(s"onError: $e")
+    override def onComplete(): Unit              = println("onComplete")
   })
 
 }

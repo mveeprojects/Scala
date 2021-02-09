@@ -5,11 +5,11 @@ import scala.collection.mutable
 object Maps {
 
   val employees = Map(
-    "Manager" -> "Bob",
+    "Manager"   -> "Bob",
     "Secretary" -> "Linda"
   )
 
-  val customers = collection.mutable.Map(
+  val customers: mutable.Map[Int, String] = collection.mutable.Map(
     1 -> "Paul",
     2 -> "Deborah"
   )
@@ -36,9 +36,7 @@ object Maps {
     printMap(customers)
   }
 
-  private def printMap(map: mutable.Map[Int, String]): Unit = {
-    for ((k, v) <- map) {
+  private def printMap(map: mutable.Map[Int, String]): Unit =
+    for ((k, v) <- map)
       printf("%d: %s\n", k, v)
-    }
-  }
 }

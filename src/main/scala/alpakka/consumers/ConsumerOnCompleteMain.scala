@@ -21,9 +21,9 @@ object ConsumerOnCompleteMain extends App with AlpConfig with LazyLogging {
 
   val consumerFuture: Future[Done] = Consumer
     .committableSource(consumerSettings, Subscriptions.topics(topic))
-    .map(msg => {
+    .map { msg =>
       println(s"message: ${msg.committableOffset.partitionOffset.offset}")
-    })
+    }
     .runWith(Sink.ignore)
 
   consumerFuture.onComplete {

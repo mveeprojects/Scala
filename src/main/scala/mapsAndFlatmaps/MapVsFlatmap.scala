@@ -24,7 +24,7 @@ object MapVsFlatmap {
 
   def mapThenFlattenProof(): Unit = {
     println("\n****** To prove this theory, here's an example of running map and then flatten seperately ******")
-    val mapped = nameList.map(_.toLowerCase)
+    val mapped    = nameList.map(_.toLowerCase)
     val flattened = mapped.flatten
     println(flattened)
   }

@@ -10,9 +10,11 @@ import org.junit.runner.RunWith
   glue = Array("classpath:com.mark.acceptance"),
   tags = Array("@wip"),
   monochrome = true,
-  plugin = Array("pretty",
+  plugin = Array(
+    "pretty",
     "html:target/cucumber",
     "json:target/cucumber/test-report.json",
-    "junit:target/cucumber/test-report.xml")
+    "junit:target/cucumber/test-report.xml"
+  )
 )
 class TestRunner {}

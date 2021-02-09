@@ -1,7 +1,6 @@
 package futures
 
 import java.lang.Thread._
-
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 import scala.util.{Failure, Success}
@@ -15,8 +14,8 @@ object FunctionReturningFuture extends App {
     i + 1
   }
 
-  longRunningComputation(12).onComplete{
-    case Success(value) => println(s"Result: $value")
+  longRunningComputation(12).onComplete {
+    case Success(value)     => println(s"Result: $value")
     case Failure(exception) => exception.printStackTrace()
   }
 
@@ -24,8 +23,8 @@ object FunctionReturningFuture extends App {
     longRunningComputation(12),
     longRunningComputation(13),
     longRunningComputation(14)
-  ).foreach(_.onComplete{
-    case Success(value) => println(s"Result: $value")
+  ).foreach(_.onComplete {
+    case Success(value)     => println(s"Result: $value")
     case Failure(exception) => exception.printStackTrace()
   })
 

@@ -7,21 +7,19 @@ package functions
 
 object PureFunctions extends App {
 
-  private val numberList = List(1, 2, 3, 4, 5, 6)
+  private val numberList                  = List(1, 2, 3, 4, 5, 6)
   private val numberListAfterPureFunction = numberList.map(timesTwo)
   printListValues(numberListAfterPureFunction)
 
   // This is pure
-  def timesTwo(input: Int): Int = {
+  def timesTwo(input: Int): Int =
     input * 2
-  }
 
   // This is not pure, because;
   // a) it modifies the input params (+ 1 to each)
   // b) it returns nothing and performs an IO operation (println)
-  def printListValues(inputList: List[Int]): Unit = {
+  def printListValues(inputList: List[Int]): Unit =
     inputList
       .map(intFromInputList => intFromInputList + 1)
       .foreach(println)
-  }
 }

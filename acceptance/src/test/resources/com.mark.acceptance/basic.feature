@@ -9,6 +9,7 @@ Feature: Should get a sensible response from URLs
     Given my calculator is running
     When I add 1 and 2
     Then result should be equal to 3
+
   @wip
   Scenario: Should subtract two positive numbers
     Given my calculator is running

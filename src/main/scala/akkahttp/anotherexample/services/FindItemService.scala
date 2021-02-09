@@ -8,9 +8,9 @@ import scala.concurrent.{ExecutionContextExecutor, Future}
 
 class FindItemService {
 
-  implicit val system: ActorSystem = ActorSystem()
+  implicit val system: ActorSystem                        = ActorSystem()
   implicit val executionContext: ExecutionContextExecutor = system.dispatcher
-  implicit val materializer: ActorMaterializer = ActorMaterializer()
+  implicit val materializer: ActorMaterializer            = ActorMaterializer()
 
   val orders: List[Item] = List(Item(1L, 1), Item(2L, 1), Item(3L, 1))
 

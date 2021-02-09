@@ -20,7 +20,7 @@ class ItemRoutes extends AppModules {
         val maybeItem: Future[Option[Item]] = findItemService.fetchItem(id)
         onSuccess(maybeItem) {
           case Some(item) => complete(write(item))
-          case None => complete(StatusCodes.NotFound)
+          case None       => complete(StatusCodes.NotFound)
         }
       }
     } ~ get {

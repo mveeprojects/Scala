@@ -6,23 +6,22 @@
 
 [Optional] login by browser -> ftp://localhost/
 
-
 ## SFTP: (Ssh File Transfer Protocol) setup and run local SFTP container
 
 [Run from project root] chmod +x start_sftp.sh && ./start_sftp.sh
 
 [Optional] login via terminal -> sftp -P 2222 foo@localhost
 
-
 ## Sources
 
 FTP server container - https://hub.docker.com/r/bogem/ftp/
 
 FTP Client app (GUI) - https://cyberduck.io/
- 
+
 Scala FTP client (ScalaFTPMain.scala) - https://gist.github.com/owainlewis/06e8bdfa6c42acec2ef9dec756c05c2f
 
-Scala Alpakka FTP client (ScalaAlpakkaFTPMain.scala) - https://developer.lightbend.com/docs/alpakka/current/examples/ftp-samples.html
+Scala Alpakka FTP client (ScalaAlpakkaFTPMain.scala)
+- https://developer.lightbend.com/docs/alpakka/current/examples/ftp-samples.html
 
 SFTP container - https://hub.docker.com/r/atmoz/sftp/
 

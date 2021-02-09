@@ -18,18 +18,16 @@ object EitherOnObjectsExample extends App {
   checkPerson(personWithNameAndAge)
   checkPerson(anotherPersonWithNameAndAge)
 
-  def checkPerson(person: PersonUsingCompanionObject): Unit = {
+  def checkPerson(person: PersonUsingCompanionObject): Unit =
     checkIfNameExists(person) match {
-      case Left(s) => println(s)
+      case Left(s)  => println(s)
       case Right(s) => println(s)
     }
-  }
 
-  def checkIfNameExists(person: PersonUsingCompanionObject): Either[String, String] = {
+  def checkIfNameExists(person: PersonUsingCompanionObject): Either[String, String] =
     if (person.name.equalsIgnoreCase("barry")) {
       Left("We don't want (%s) here".format(person.name))
     } else {
       Right("%s is a good person".format(person.name))
     }
-  }
 }

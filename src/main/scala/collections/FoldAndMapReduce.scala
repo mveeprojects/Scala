@@ -13,9 +13,9 @@ object FoldAndMapReduce extends App with LazyLogging {
   integerMapReduceSumExample()
   integerMapReduceProductExample()
 
-  private val intList = List(1, 2, 3, 4, 5, 6)
+  private val intList    = List(1, 2, 3, 4, 5, 6)
   private val doubleList = List(1.0, 2.5, 3.5)
-  private val strings = List("item1", "item2", "item3", "item4")
+  private val strings    = List("item1", "item2", "item3", "item4")
 
   def recursiveCallExample(): Unit = {
     //    val sumOfDoubles = doubleList.foldLeft(0.0)(_ + _)
@@ -23,14 +23,13 @@ object FoldAndMapReduce extends App with LazyLogging {
     logger.info(s"Result of recursive call on double list -> $sumOfDoubles")
   }
 
-  def sumTwoDoubles(a: Double, b: Double): Double = {
+  def sumTwoDoubles(a: Double, b: Double): Double =
     a + b
-  }
 
   def inlineFunctionExample(): Unit = {
-    val foldLeftInlineFunctionResult: String = strings.foldLeft("")((acc, item) => {
+    val foldLeftInlineFunctionResult: String = strings.foldLeft("") { (acc, item) =>
       acc + item + "/"
-    })
+    }
     val outResult: String = foldLeftInlineFunctionResult.patch(foldLeftInlineFunctionResult.lastIndexOf('/'), "", 1)
     logger.info(s"Result of inline function on double list -> $outResult")
   }

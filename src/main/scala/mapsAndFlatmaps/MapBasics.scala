@@ -5,7 +5,7 @@ package mapsAndFlatmaps
 object MapBasics {
 
   private val numList = List(1, 2, 3, 4, 5, 6)
-  private val myMap = Map("name" -> "Mark", "age" -> "32")
+  private val myMap   = Map("name" -> "Mark", "age" -> "32")
 
   def main(args: Array[String]): Unit = {
     multiplyAllBy2Simple()

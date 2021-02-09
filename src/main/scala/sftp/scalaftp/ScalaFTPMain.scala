@@ -1,22 +1,20 @@
 package sftp.scalaftp
 
-import java.io.{BufferedOutputStream, FileOutputStream, IOException}
-
 import org.apache.commons.net.ftp._
 
+import java.io.{BufferedOutputStream, FileOutputStream, IOException}
 import scala.collection.immutable
-
 
 object ScalaFTPMain extends App {
 
-  private val client = new FTPClient
+  private val client          = new FTPClient
   private val localPathPrefix = "target/"
 
   openFTPConnection()
   retrieveFiles(listFilesOnFTP(false))
   closeFTPConnection()
 
-  private def openFTPConnection(): Unit = {
+  private def openFTPConnection(): Unit =
     try {
       client.connect("localhost")
       client.enterLocalPassiveMode()
@@ -25,7 +23,6 @@ object ScalaFTPMain extends App {
     } catch {
       case _: IOException => println("exception thrown trying to connect to FTP server")
     }
-  }
 
   private def listFilesOnFTP(printFileNames: Boolean): Seq[FTPFile] = {
     val fileList: immutable.Seq[FTPFile] = client.listFiles().toList
@@ -36,7 +33,7 @@ object ScalaFTPMain extends App {
     fileList
   }
 
-  private def retrieveFiles(fileList: Seq[FTPFile]): Unit = {
+  private def retrieveFiles(fileList: Seq[FTPFile]): Unit =
     for (file <- fileList) {
       val out = new BufferedOutputStream(new FileOutputStream(localPathPrefix + file.getName))
       try {
@@ -48,11 +45,8 @@ object ScalaFTPMain extends App {
       } catch {
         case e: Exception =>
           println("error", e)
-      } finally {
-        if (out != null) out.close()
-      }
+      } finally if (out != null) out.close()
     }
-  }
 
   private def closeFTPConnection(): Unit = {
     client.disconnect()

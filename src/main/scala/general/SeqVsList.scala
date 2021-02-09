@@ -17,13 +17,13 @@ object SeqVsList extends App with LazyLogging {
 
   def populateSeq(): Unit = {
     val seqStartTime = System.currentTimeMillis()
-    val aSeq = Seq.fill(numberOfElements)("foo")
+    val aSeq         = Seq.fill(numberOfElements)("foo")
     logger.info(s"Populating Seq took ${System.currentTimeMillis() - seqStartTime} ms")
   }
 
   def populateList(): Unit = {
     val listStartTime = System.currentTimeMillis()
-    val aList = List.fill(numberOfElements)("bar")
+    val aList         = List.fill(numberOfElements)("bar")
     logger.info(s"Populating List took ${System.currentTimeMillis() - listStartTime} ms")
   }
 }

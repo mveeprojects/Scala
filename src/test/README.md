@@ -5,6 +5,7 @@
 Source: http://www.scalatest.org/user_guide/selecting_a_style
 
 __FunSuite - xUnit testing__
+
 ``` 
 class SomeSpec extends FunSpec {
   test("test name goes here") { 
@@ -14,6 +15,7 @@ class SomeSpec extends FunSpec {
 ```
 
 __FlatSpec - BDD testing__
+
 ```
 class SomeSpec extends FlatSpec {
   "something" should "do something useful" in { 
@@ -23,6 +25,7 @@ class SomeSpec extends FlatSpec {
 ```
 
 __FeatureSpec - BDD testing similar to Cucumber (Given, When, Then)__
+
 ```
 class SomeSpec extends FeatureSpec with GivenWhenThen {
 
