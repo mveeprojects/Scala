@@ -42,11 +42,7 @@ object AvroProducer extends App with LazyLogging {
 
     val record: ProducerRecord[String, GenericRecord] = new ProducerRecord(topic, genericPerson)
 
-    val sendFuture = Future {
-      logger.info("Sending record to Kafka")
-      producer.send(record)
-      logger.info("Record sent to Kafka")
-    }
+    val sendFuture = Future(producer.send(record))
 
     Await.ready(sendFuture, 2.seconds).value.get match {
       case Success(_) =>

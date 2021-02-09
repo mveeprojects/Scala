@@ -11,3 +11,19 @@ https://dzone.com/articles/hands-on-apache-kafka-with-scala
 
 * https://www.confluent.io/download/
 * ./kafka-console-consumer --bootstrap-server localhost:9093 --topic marks-topic --from-beginning
+
+## Avro Kafka
+
+### Kafdrop (Kafka UI) 
+
+This will be available [here](http://localhost:9000/) when docker-compose up -d is ran from the docker directory of this package
+
+Use this to create the topic "person-topic" and to easily view messages produced to Kafka
+
+### Schema Registry
+
+View all subjects (schemas) [here](http://localhost:8081/subjects/)
+
+View all versions of the person-topic schemas [here](http://localhost:8081/subjects/person-topic-value/versions)
+
+View specific information of a given version of the schema by hitting an [endpoint like this](http://localhost:8081/subjects/person-topic-value/versions/1)
